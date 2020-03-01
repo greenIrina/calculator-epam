@@ -1,6 +1,6 @@
 package com.linicar.calculator.parser.expression;
 
-import expression.exceptions.OverflowException;
+import com.linicar.calculator.parser.expression.exceptions.OverflowException;
 
 public class CheckedSubtract extends AbstractBinaryOperation {
     public CheckedSubtract(final TripleExpression l, final TripleExpression r) {

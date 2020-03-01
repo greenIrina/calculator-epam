@@ -1,6 +1,6 @@
 package com.linicar.calculator.parser.expression;
 
-import expression.exceptions.EvaluatingException;
+import com.linicar.calculator.parser.expression.exceptions.EvaluatingException;
 
 /**
  * @author Georgiy Korneev (kgeorgiy@kgeorgiy.info)

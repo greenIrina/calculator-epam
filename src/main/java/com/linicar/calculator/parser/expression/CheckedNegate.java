@@ -1,6 +1,6 @@
 package com.linicar.calculator.parser.expression;
 
-import expression.exceptions.OverflowException;
+import com.linicar.calculator.parser.expression.exceptions.OverflowException;
 
 public class CheckedNegate extends AbstractUnaryOperation {
     public CheckedNegate(final TripleExpression val) {

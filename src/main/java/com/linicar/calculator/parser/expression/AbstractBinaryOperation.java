@@ -1,6 +1,6 @@
 package com.linicar.calculator.parser.expression;
 
-import expression.exceptions.EvaluatingException;
+import com.linicar.calculator.parser.expression.exceptions.EvaluatingException;
 
 public abstract class AbstractBinaryOperation implements TripleExpression {
     private TripleExpression l;

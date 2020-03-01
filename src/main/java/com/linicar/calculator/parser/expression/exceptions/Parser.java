@@ -1,6 +1,6 @@
 package com.linicar.calculator.parser.expression.exceptions;
 
-import expression.TripleExpression;
+import com.linicar.calculator.parser.expression.TripleExpression;
 
 /**
  * @author Georgiy Korneev (kgeorgiy@kgeorgiy.info)

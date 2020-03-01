@@ -1,8 +1,8 @@
 package com.linicar.calculator.parser.expression;
 
-import expression.exceptions.DivisionByZeroException;
-import expression.exceptions.IllegalOperationException;
-import expression.exceptions.OverflowException;
+import com.linicar.calculator.parser.expression.exceptions.DivisionByZeroException;
+import com.linicar.calculator.parser.expression.exceptions.IllegalOperationException;
+import com.linicar.calculator.parser.expression.exceptions.OverflowException;
 
 public class CheckedDivide extends AbstractBinaryOperation {
     public CheckedDivide(final TripleExpression l, final TripleExpression r) {
