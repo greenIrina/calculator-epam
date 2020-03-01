@@ -1,15 +1,13 @@
-package com.linicar.calculator.service;
+package com.linicar.calculator.service.ParserServiceImpl;
 
-import com.linicar.calculator.repository.ParserRepository.ModeOperations;
-import com.linicar.calculator.repository.ParserRepository.Parser;
+import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.ModeOperations;
+import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.Parser;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
-import com.linicar.calculator.repository.ParserRepository.*;
+import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.*;
 import com.linicar.calculator.service.ParserServiceImpl.operations.*;
-import org.springframework.stereotype.Service;
 
 import java.util.*;
 
-@Service
 public class ExpressionParser<T> implements Parser {
 
     private int openBraceCounter;

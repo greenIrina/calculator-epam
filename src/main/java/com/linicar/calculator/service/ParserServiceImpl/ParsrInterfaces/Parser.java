@@ -1,4 +1,4 @@
-package com.linicar.calculator.repository.ParserRepository;
+package com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserException;
 

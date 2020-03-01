@@ -1,7 +1,7 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations;
 
-import com.linicar.calculator.repository.ParserRepository.TripleExpression;
-import com.linicar.calculator.repository.ParserRepository.ModeOperations;
+import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.ModeOperations;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 
 public class Divide<T> extends AbstractBinaryOperator<T> {
