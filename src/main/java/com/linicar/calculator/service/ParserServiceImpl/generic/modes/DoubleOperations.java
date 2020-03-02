@@ -1,6 +1,5 @@
 package com.linicar.calculator.service.ParserServiceImpl.generic.modes;
 
-
 import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.*;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 

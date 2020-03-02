@@ -4,7 +4,6 @@ import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.*;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 
 public class BigDecimalOperations implements ModeOperations<BigDecimal> {
 
