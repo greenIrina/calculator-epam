@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 //получает строку-кидает её в парсер
 //получает сроку от парсера-кидает её в ответ
 public class SimpleCalcPage extends Page {
-    private static ParserService parserService;
+    private static SimpleCalcService parserService;
 
     public SimpleCalcPage() throws UnsupportedModeException {//этого здесь быть не должно(я про исключение)
         String mode = "d";//считаем в даблах
