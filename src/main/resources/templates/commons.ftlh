@@ -1,5 +1,3 @@
-<#-- @ftlvariable name="expression" type="java.lang.String" -->
-
 <#import "/spring.ftl" as spring/>
 <#macro page>
     <!DOCTYPE html>
@@ -7,31 +5,22 @@
     <head>
         <meta charset="UTF-8">
         <title>Cooler Calculator</title>
+        <link rel="stylesheet" type="text/css" href="<@spring.url '/css/normalize.css'/>">
+        <link rel="stylesheet" type="text/css" href="<@spring.url '/css/style.css'/>">
+        <link rel="stylesheet" type="text/css" href="<@spring.url '/css/form.css'/>">
+        <link rel="stylesheet" type="text/css" href="<@spring.url '/css/datatable.css'/>">
     </head>
     <body>
-    <div class="enter form-box">
-        <div class="header">Enter</div>
-        <div class="body">
-            <form method="post" action="">
-                <input type="hidden" name="action" value="enter"/>
-                <div class="field">
-                    <div class="name">
-                        <label for="login">Login</label>
-                    </div>
-                    <div class="value">
-                        <input autofocus id="login" name="login" value="${expression!}"/>
-                    </div>
-                </div>
-                <div class="button-field">
-                    <input type="submit" value="Enter">
-                </div>
-            </form>
-        </div>
-    </div>
-
+    Hello
+    <#nested/>
     </body>
-
     </html>
 </#macro>
 
 
+<#macro error field>
+    <@spring.bind field/>
+    <#if spring.status.errorMessage??>
+        <div class="error">${spring.status.errorMessage}</div>
+    </#if>
+</#macro>
