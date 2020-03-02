@@ -22,12 +22,10 @@ public class ParserService implements ParserRepository {
 
     private ModeOperations<?> getMode(String mode) throws UnsupportedModeException {
         switch (mode) {
-            case "i":
-                return new IntegerOperations();
             case "d":
                 return new DoubleOperations();
-            case "bi":
-                return new BigIntegerOperations();
+            case "bd":
+                return new BigDecimalOperations();
             default:
                 throw new UnsupportedModeException(mode);
         }

@@ -6,7 +6,6 @@ import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExc
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserException;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedModeException;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -14,10 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 //получает строку-кидает её в парсер
 //получает сроку от парсера-кидает её в ответ
 public class SimpleCalcPage extends Page {
-    private static String mode = "i";
     private static ParserService parserService;
 
-    public SimpleCalcPage() throws UnsupportedModeException {//этого здесь быть не должно
+    public SimpleCalcPage() throws UnsupportedModeException {//этого здесь быть не должно(я про исключение)
+        String mode = "d";//считаем в даблах
         parserService = new ParserService(mode);
     }
 
