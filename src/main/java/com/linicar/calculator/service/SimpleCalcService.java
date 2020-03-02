@@ -6,8 +6,9 @@ import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.TripleEx
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserException;
 import com.linicar.calculator.service.ParserServiceImpl.generic.modes.DoubleOperations;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class SimpleCalcService implements ParserRepository {
     private final ExpressionParser parser;
 
