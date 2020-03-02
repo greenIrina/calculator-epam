@@ -9,6 +9,16 @@
         <link rel="stylesheet" type="text/css" href="<@spring.url '/css/style.css'/>">
         <link rel="stylesheet" type="text/css" href="<@spring.url '/css/form.css'/>">
         <link rel="stylesheet" type="text/css" href="<@spring.url '/css/datatable.css'/>">
+        <script>
+            //function that display value
+            function dis(val) {
+                document.getElementById("expression").value += val
+            }
+
+            function clear() {
+                document.getElementById("expresion").value = ""
+            }
+        </script>
     </head>
     <body>
     Hello
