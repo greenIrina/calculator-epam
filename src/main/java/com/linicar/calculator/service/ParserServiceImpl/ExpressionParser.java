@@ -1,18 +1,19 @@
 package com.linicar.calculator.service.ParserServiceImpl;
 
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.ModeOperations;
+import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.SimpleOperations;
 import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.Parser;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.*;
 import com.linicar.calculator.service.ParserServiceImpl.operations.*;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class ExpressionParser<T> implements Parser {
 
     private int openBraceCounter;
     private String expression;
-    private ModeOperations<T> mode;
+    private SimpleOperations<T> mode;
     private int positionInExpression;
 
     private T value;
@@ -34,7 +35,14 @@ public class ExpressionParser<T> implements Parser {
         END("end"),
         ERROR("err"),
         VARIABLE("value"),
-        CONST("value");
+        CONST("value"),
+        SQRT("operator"),
+        POW("operator"),
+        FACTORIAL("operator"),
+        SIN("operator"),
+        COS("operator"),
+        TAN("operator"),
+        ATAN("operator");
 
         final String type;
 
@@ -43,12 +51,21 @@ public class ExpressionParser<T> implements Parser {
         }
     }
 
+    private static Map<String, BigDecimal> constantMap = new HashMap<>();
+
     private static Map<Character, Token> tokenMap = new HashMap<>();
 
-    public ExpressionParser(ModeOperations<T> mode) {
+    public ExpressionParser(SimpleOperations<T> mode) {
         this.mode = mode;
     }
 
+    //Constants
+    static {
+        constantMap.put("e", new BigDecimal("2.7"));
+        constantMap.put("pi", new BigDecimal("3.14"));
+    }
+
+    //Operators
     static {
         tokenMap.put('+', Token.PLUS);
         tokenMap.put('-', Token.MINUS);
@@ -99,11 +116,11 @@ public class ExpressionParser<T> implements Parser {
     private T getConst() throws ParserException {
         int left = positionInExpression - 1;
         while (positionInExpression < expression.length() &&
-                Character.isDigit(expression.charAt(positionInExpression))) {
+                (Character.isDigit(expression.charAt(positionInExpression)) ||
+                        expression.charAt(positionInExpression) == '.')) {
             positionInExpression++;
         }
         return mode.parseConst(expression.substring(left, positionInExpression));
-
     }
 
     private void getId() throws ParserException {
@@ -176,6 +193,14 @@ public class ExpressionParser<T> implements Parser {
                 return new Abs<>(unaryOperations(true), mode);
             case SQUARE:
                 return new Square<>(unaryOperations(true), mode);
+            case SIN:
+                return new Sin<>(unaryOperations(true), mode);
+            case COS:
+                return new Cos<>(unaryOperations(true), mode);
+            case TAN:
+                return new Tan<>(unaryOperations(true), mode);
+            case ATAN:
+                return new Atan<>(unaryOperations(true), mode);
             case OPEN_BRACE:
                 openBraceCounter++;
                 TripleExpression<T> e = addSub(true);

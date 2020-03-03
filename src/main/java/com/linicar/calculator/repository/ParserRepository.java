@@ -5,6 +5,6 @@ import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserExcepti
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ParserRepository {
-    Double evaluate(String expression) throws ParserException, EvaluatingExceptions;
+public interface ParserRepository<T> {
+    T evaluate(String expression) throws ParserException, EvaluatingExceptions;
 }
