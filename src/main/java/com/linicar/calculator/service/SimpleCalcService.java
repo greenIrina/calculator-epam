@@ -17,9 +17,9 @@ public class SimpleCalcService implements ParserRepository {
     }
 
     @Override
-    public String evaluate(String expression) throws ParserException, EvaluatingExceptions {
+    public Double evaluate(String expression) throws ParserException, EvaluatingExceptions {
         TripleExpression tripleExpression = parser.parse(expression);
-        return (String) tripleExpression.evaluate(0, 0, 0);
+        return (Double) tripleExpression.evaluate(0, 0, 0);
     }
 
 

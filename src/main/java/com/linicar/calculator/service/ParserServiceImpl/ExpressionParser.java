@@ -99,11 +99,11 @@ public class ExpressionParser<T> implements Parser {
     private T getConst() throws ParserException {
         int left = positionInExpression - 1;
         while (positionInExpression < expression.length() &&
-                Character.isDigit(expression.charAt(positionInExpression))) {
+                (Character.isDigit(expression.charAt(positionInExpression)) ||
+                        expression.charAt(positionInExpression) == '.')) {
             positionInExpression++;
         }
         return mode.parseConst(expression.substring(left, positionInExpression));
-
     }
 
     private void getId() throws ParserException {
