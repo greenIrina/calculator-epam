@@ -4,8 +4,12 @@ import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.*;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
-public class BigDecimalOperations implements ModeOperations<BigDecimal> {
+public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
+
+    //точность
+    private static MathContext mc = new MathContext(10);
 
     @Override
     public BigDecimal parseConst(String expression) throws ParserException {
@@ -65,5 +69,30 @@ public class BigDecimalOperations implements ModeOperations<BigDecimal> {
         }
         //todo: работает ли с отрицательными числами?
         return left.subtract(left.divide(right).multiply(right));
+    }
+
+    @Override
+    public BigDecimal pow(BigDecimal x, BigDecimal y) throws EvaluatingExceptions {
+        return x.pow(y.intValue(), mc);
+    }
+
+    @Override
+    public BigDecimal sin(BigDecimal x) throws EvaluatingExceptions {
+        return null;
+    }
+
+    @Override
+    public BigDecimal cos(BigDecimal x) throws EvaluatingExceptions {
+        return null;
+    }
+
+    @Override
+    public BigDecimal tan(BigDecimal x) throws EvaluatingExceptions {
+        return null;
+    }
+
+    @Override
+    public BigDecimal atan(BigDecimal x) throws EvaluatingExceptions {
+        return null;
     }
 }
