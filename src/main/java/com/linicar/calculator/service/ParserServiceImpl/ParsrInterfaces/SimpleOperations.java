@@ -2,7 +2,7 @@ package com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 
-public interface ModeOperations<T> {
+public interface SimpleOperations<T> {
     T parseConst(String expression) throws ParserException;
 
     T add(T left, T right) throws EvaluatingExceptions;
@@ -22,4 +22,5 @@ public interface ModeOperations<T> {
     T square(T x) throws EvaluatingExceptions;
 
     T mod(T left, T right) throws EvaluatingExceptions;
+
 }

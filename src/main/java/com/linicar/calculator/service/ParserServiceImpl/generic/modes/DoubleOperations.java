@@ -4,7 +4,7 @@ import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.*;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 
 
-public class DoubleOperations implements ModeOperations<Double> {
+public class DoubleOperations implements SimpleOperations<Double> {
     @Override
     public Double parseConst(String expression) throws ParserException {
         try {
@@ -65,5 +65,15 @@ public class DoubleOperations implements ModeOperations<Double> {
             throw new DivisionByZeroException();
         }
         return left % right;
+    }
+
+    @Override
+    public Double sqrt(Double x) throws EvaluatingExceptions {
+        return Math.sqrt(x);
+    }
+
+    @Override
+    public Double pow(Double x, Double y) throws EvaluatingExceptions {
+        return Math.pow(x, y);
     }
 }

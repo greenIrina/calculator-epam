@@ -1,15 +1,15 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations;
 
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.ModeOperations;
+import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.SimpleOperations;
 import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 
 public abstract class AbstractBinaryOperator<T> implements TripleExpression<T> {
     private TripleExpression<T> firstOperand;
     private TripleExpression<T> secondOperand;
-    protected ModeOperations<T> mode;
+    protected SimpleOperations<T> mode;
 
-    AbstractBinaryOperator(TripleExpression<T> x, TripleExpression<T> y, ModeOperations<T> mode) {
+    AbstractBinaryOperator(TripleExpression<T> x, TripleExpression<T> y, SimpleOperations<T> mode) {
         firstOperand = x;
         secondOperand = y;
         this.mode = mode;

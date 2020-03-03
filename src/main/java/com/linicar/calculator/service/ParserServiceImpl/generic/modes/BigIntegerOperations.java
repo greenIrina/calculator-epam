@@ -6,7 +6,7 @@ import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 import java.math.BigInteger;
 
 
-public class BigIntegerOperations implements ModeOperations<BigInteger> {
+public class BigIntegerOperations implements SimpleOperations<BigInteger> {
 
     @Override
     public BigInteger parseConst(String expression) throws ParserException {

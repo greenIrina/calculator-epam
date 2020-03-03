@@ -5,7 +5,7 @@ import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.*;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 
 
-public class IntegerOperations implements ModeOperations<Integer> {
+public class IntegerOperations implements SimpleOperations<Integer> {
     @Override
     public Integer parseConst(String expression) throws ParserException {
         try {

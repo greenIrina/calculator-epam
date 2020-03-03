@@ -2,11 +2,10 @@ package com.linicar.calculator.service.ParserServiceImpl.operations;
 
 import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.SimpleOperations;
 import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.TripleExpression;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
+import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
 
-public class Abs<T> extends AbstractUnaryOperator<T> {
-
-    public Abs(TripleExpression<T> x, SimpleOperations<T> mode) {
+public class Atan<T> extends AbstractUnaryOperator<T> {
+    public Atan(TripleExpression<T> x, SimpleOperations<T> mode) {
         super(x, mode);
     }
 

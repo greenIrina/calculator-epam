@@ -1,12 +1,12 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations;
 
 import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.TripleExpression;
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.ModeOperations;
+import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.SimpleOperations;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 
 public class Multiply<T> extends AbstractBinaryOperator<T> {
 
-    public Multiply(TripleExpression<T> x, TripleExpression<T> y, ModeOperations<T> mode) {
+    public Multiply(TripleExpression<T> x, TripleExpression<T> y, SimpleOperations<T> mode) {
         super(x, y, mode);
     }
 
