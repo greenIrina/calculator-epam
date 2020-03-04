@@ -31,8 +31,14 @@
     height: 2rem;
 }
 
-.calculator table input[type="submit"] {
+.calculator table .digit input {
     background-color: lightgreen;
+    color: #333333;
+    border-radius: var(--border-radius);
+}
+
+.calculator table input[type="submit"] {
+    background-color: limegreen;
     color: darkslategrey;
     border: solid black 2px;
     width: 100%;
