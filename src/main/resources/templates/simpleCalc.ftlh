@@ -17,8 +17,12 @@
                         <td><input type="button" value="c" onclick="clear()"/> </td>
                     </tr>
                     <tr>
-                        <!-- create button and assign value to each button -->
-                        <!-- dis("1") will call function dis to display value -->
+                        <td><input type="button" value="(" onclick="dis('(')"> </td>
+                        <td><input type="button" value=")" onclick="dis(')')"> </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
                         <td><input type="button" value="1" onclick="dis('1')"/></td>
                         <td><input type="button" value="2" onclick="dis('2')"/></td>
                         <td><input type="button" value="3" onclick="dis('3')"/></td>

@@ -54,6 +54,7 @@ public class ExpressionParser<T> implements Parser {
     private static Map<String, BigDecimal> constantMap = new HashMap<>();
 
     private static Map<Character, Token> tokenMap = new HashMap<>();
+    private static Map<String, Token> wordOperatorsMap = new HashMap<>();
 
     public ExpressionParser(SimpleOperations<T> mode) {
         this.mode = mode;
@@ -73,6 +74,12 @@ public class ExpressionParser<T> implements Parser {
         tokenMap.put('*', Token.MUL);
         tokenMap.put('(', Token.OPEN_BRACE);
         tokenMap.put(')', Token.CLOSE_BRACE);
+        wordOperatorsMap.put("sin", Token.SIN);
+        wordOperatorsMap.put("cos", Token.COS);
+        wordOperatorsMap.put("tan", Token.TAN);
+        wordOperatorsMap.put("atan", Token.ATAN);
+        wordOperatorsMap.put("pow", Token.POW);
+        wordOperatorsMap.put("sqrt", Token.SQRT);
     }
 
     private void skipWhiteSpace() {
@@ -138,6 +145,11 @@ public class ExpressionParser<T> implements Parser {
                 nameOfVariable = str;
                 curToken = Token.VARIABLE;
                 return;
+        }
+        if (wordOperatorsMap.containsKey(str)) {
+            curToken = wordOperatorsMap.get(str);
+            match();
+            return;
         }
         throw new WrongTokenException(str, expression);
     }
