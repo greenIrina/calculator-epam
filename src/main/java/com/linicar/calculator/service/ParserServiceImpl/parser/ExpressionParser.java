@@ -1,9 +1,10 @@
 package com.linicar.calculator.service.ParserServiceImpl.parser;
 
+import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
 import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.SimpleOperations;
-import com.linicar.calculator.service.ParserServiceImpl.operations.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
-import com.linicar.calculator.service.ParserServiceImpl.operations.*;
+import com.linicar.calculator.service.ParserServiceImpl.operations.operations.*;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -13,7 +14,7 @@ public class ExpressionParser<T> implements Parser {
 
     private int openBraceCounter;
     private String expression;
-    private SimpleOperations<T> mode;
+    private Operations<T> mode;
     private int positionInExpression;
 
     private T value;
@@ -57,7 +58,7 @@ public class ExpressionParser<T> implements Parser {
 
     private static Map<String, Token> functionsMap = new HashMap<>();
 
-    public ExpressionParser(SimpleOperations<T> mode) {
+    public ExpressionParser(Operations<T> mode) {
         this.mode = mode;
     }
 
@@ -248,12 +249,14 @@ public class ExpressionParser<T> implements Parser {
                 left = new Divide<>(left, unaryOperations(true), mode);
             } else if (curToken == Token.MOD) {
                 left = new Mod<>(left, unaryOperations(true), mode);
-            } else if (curToken == Token.POW) {
-                
             } else {
                 return left;
             }
         }
+    }
+
+    private TripleExpression<T> binaryFunctions(boolean newToken) throws ParserException{
+
     }
 
     private TripleExpression<T> addSub(boolean newToken) throws ParserException {

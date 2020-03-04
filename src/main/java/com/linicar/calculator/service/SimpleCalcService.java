@@ -2,7 +2,7 @@ package com.linicar.calculator.service;
 
 import com.linicar.calculator.repository.ParserRepository;
 import com.linicar.calculator.service.ParserServiceImpl.parser.ExpressionParser;
-import com.linicar.calculator.service.ParserServiceImpl.operations.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserException;
 import com.linicar.calculator.service.ParserServiceImpl.generic.modes.DoubleOperations;

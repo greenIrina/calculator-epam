@@ -1,4 +1,6 @@
-package com.linicar.calculator.service.ParserServiceImpl.operations;
+package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
+
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 
 public class Const<T> implements TripleExpression<T> {
 

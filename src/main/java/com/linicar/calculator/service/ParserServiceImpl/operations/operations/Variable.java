@@ -1,4 +1,6 @@
-package com.linicar.calculator.service.ParserServiceImpl.operations;
+package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
+
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 
 public class Variable<T> implements TripleExpression<T> {
     private final String name;

@@ -2,27 +2,27 @@ package com.linicar.calculator.service.ParserServiceImpl.generic.interfaces;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 
-public interface SimpleOperations<T> {
-    T parseConst(String expression) throws ParserException;
+public interface SimpleOperations<T> extends Operations<T>{
 
-    T add(T left, T right) throws EvaluatingExceptions;
+    default T sin(T x) throws EvaluatingExceptions, UnsupportedModeException {
+        throw new UnsupportedModeException("Мы не поддерживаем это здесь");
+    }
 
-    T sub(T left, T right) throws EvaluatingExceptions;
+    default T cos(T x) throws EvaluatingExceptions, UnsupportedModeException {
+        throw new UnsupportedModeException("");
+    }
 
-    T divide(T left, T right) throws EvaluatingExceptions;
+    default T tan(T x) throws EvaluatingExceptions, UnsupportedModeException{
+        throw new UnsupportedModeException("");
+    }
 
-    T mult(T left, T right) throws EvaluatingExceptions;
+    default T atan(T x) throws EvaluatingExceptions, UnsupportedModeException{
+        throw new UnsupportedModeException("");
+    }
 
-    T negative(T x) throws EvaluatingExceptions;
+    default T pow(T x, T y) throws EvaluatingExceptions, UnsupportedModeException{
+        throw new UnsupportedModeException("");
+    }
 
-    T getNumber(int x);
-
-    T abs(T x) throws EvaluatingExceptions;
-
-    T square(T x) throws EvaluatingExceptions;
-
-    T mod(T left, T right) throws EvaluatingExceptions;
-
-    T sqrt(T x) throws EvaluatingExceptions;
 
 }
