@@ -3,11 +3,9 @@ package com.linicar.calculator.controller;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserException;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedModeException;
 import com.linicar.calculator.service.SimpleCalcService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,21 +19,19 @@ import javax.validation.Valid;
 public class SimpleCalcPage extends Page {
     private static SimpleCalcService simpleCalcService;
 
-    public SimpleCalcPage() throws UnsupportedModeException {//этого здесь быть не должно(я про исключение)
-//        String mode = "d";//считаем в даблах
+    public SimpleCalcPage() {
         simpleCalcService = new SimpleCalcService();
     }
 
-    //    @RequestMapping(value = "/commons", method = RequestMethod.GET)
-    @GetMapping("calc")
-    public String calc(String expression, Model model) throws EvaluatingExceptions, ParserException {
+    @GetMapping("base")
+    public String calc(String expression, Model model) {
         model.addAttribute("expression", expression);
         return "simpleCalc";
     }
 
-    @PostMapping("calc")
-    public String calc(@Valid @ModelAttribute("expression") String expression, BindingResult bindingResult, HttpSession httpSession) throws EvaluatingExceptions, ParserException {
-//        putMessage(httpSession, expression);
+    @PostMapping("base")
+    public String calc(@Valid @ModelAttribute("expression") String expression, HttpSession httpSession)
+            throws EvaluatingExceptions {
         try {
             String ans = simpleCalcService.evaluate(expression).toString();
             if (ans.substring(ans.length() - 2, ans.length()).equals(".0")) {
@@ -47,6 +43,5 @@ public class SimpleCalcPage extends Page {
             putMessage(httpSession, "Error: " + e.getMessage());
         }
         return "simpleCalc";
-
     }
 }

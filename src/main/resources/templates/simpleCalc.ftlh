@@ -12,9 +12,9 @@
                 <input type="hidden" name="action" value="calc"/>
                 <table border="1">
                     <tr>
-                        <td colspan="3"><input autofocus id="expression" name="expression"
+                        <td colspan="4"><input autofocus type="text" id="expression" name="expression"
                                value="${expression!}"/></td>
-                        <td><input type="button" value="c" onclick="clear()"/> </td>
+<#--                        <td><input type="button" value="c" onclick="clear()"/> </td>-->
                     </tr>
                     <tr>
                         <td><input type="button" value="(" onclick="dis('(')"> </td>

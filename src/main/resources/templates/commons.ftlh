@@ -16,12 +16,20 @@
             }
 
             function clear() {
-                document.getElementById("expresion").value = ""
+                document.getElementById("expresion").value = ''
             }
         </script>
     </head>
     <body>
-    Hello
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/base">Base Calculator</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <#nested/>
     </body>
     </html>

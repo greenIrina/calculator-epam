@@ -1,13 +1,14 @@
 package com.linicar.calculator.service.ParserServiceImpl;
 
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.SimpleOperations;
 import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.Parser;
+import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.SimpleOperations;
+import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.*;
 import com.linicar.calculator.service.ParserServiceImpl.operations.*;
 
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class ExpressionParser<T> implements Parser {
 

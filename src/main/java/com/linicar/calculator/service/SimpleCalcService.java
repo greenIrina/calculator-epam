@@ -21,6 +21,4 @@ public class SimpleCalcService implements ParserRepository {
         TripleExpression tripleExpression = parser.parse(expression);
         return (Double) tripleExpression.evaluate(0, 0, 0);
     }
-
-
 }
