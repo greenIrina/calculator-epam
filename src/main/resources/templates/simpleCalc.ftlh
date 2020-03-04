@@ -48,7 +48,7 @@
                     </tr>
                     <tr>
                         <td><input type="button" value="." onclick="dis('.')"/></td>
-                        <td><input type="button" value="0" onclick="dis('0')"/></td>
+                        <td class="digit"><input type="button" value="0" onclick="dis('0')"/></td>
                         <td><input type="submit" value="="></td>
                         <td><input type="button" value="*" onclick="dis('*')"/></td>
                     </tr>
