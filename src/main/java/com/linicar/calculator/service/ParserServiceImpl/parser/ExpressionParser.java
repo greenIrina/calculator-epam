@@ -238,7 +238,7 @@ public class ExpressionParser<T> implements Parser {
         }
     }
 
-    private TripleExpression<T> mulDiv(boolean newToken) throws ParserException {
+    private TripleExpression<T> binaryOperations(boolean newToken) throws ParserException {
         TripleExpression<T> left = unaryOperations(newToken);
 
         while (true) {
@@ -248,6 +248,8 @@ public class ExpressionParser<T> implements Parser {
                 left = new Divide<>(left, unaryOperations(true), mode);
             } else if (curToken == Token.MOD) {
                 left = new Mod<>(left, unaryOperations(true), mode);
+            } else if (curToken == Token.POW) {
+                
             } else {
                 return left;
             }
@@ -255,13 +257,13 @@ public class ExpressionParser<T> implements Parser {
     }
 
     private TripleExpression<T> addSub(boolean newToken) throws ParserException {
-        TripleExpression<T> left = mulDiv(newToken);
+        TripleExpression<T> left = binaryOperations(newToken);
 
         while (true) {
             if (curToken == Token.PLUS) {
-                left = new Add<>(left, mulDiv(true), mode);
+                left = new Add<>(left, binaryOperations(true), mode);
             } else if (curToken == Token.MINUS) {
-                left = new Subtract<>(left, mulDiv(true), mode);
+                left = new Subtract<>(left, binaryOperations(true), mode);
             } else {
                 return left;
             }
