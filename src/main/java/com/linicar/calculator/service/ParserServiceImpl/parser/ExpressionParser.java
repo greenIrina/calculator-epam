@@ -1,8 +1,7 @@
-package com.linicar.calculator.service.ParserServiceImpl;
+package com.linicar.calculator.service.ParserServiceImpl.parser;
 
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.Parser;
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.SimpleOperations;
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.SimpleOperations;
+import com.linicar.calculator.service.ParserServiceImpl.operations.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 import com.linicar.calculator.service.ParserServiceImpl.operations.*;
 
@@ -55,7 +54,8 @@ public class ExpressionParser<T> implements Parser {
     private static Map<String, BigDecimal> constantMap = new HashMap<>();
 
     private static Map<Character, Token> tokenMap = new HashMap<>();
-    private static Map<String, Token> wordOperatorsMap = new HashMap<>();
+
+    private static Map<String, Token> functionsMap = new HashMap<>();
 
     public ExpressionParser(SimpleOperations<T> mode) {
         this.mode = mode;
@@ -75,12 +75,17 @@ public class ExpressionParser<T> implements Parser {
         tokenMap.put('*', Token.MUL);
         tokenMap.put('(', Token.OPEN_BRACE);
         tokenMap.put(')', Token.CLOSE_BRACE);
-        wordOperatorsMap.put("sin", Token.SIN);
-        wordOperatorsMap.put("cos", Token.COS);
-        wordOperatorsMap.put("tan", Token.TAN);
-        wordOperatorsMap.put("atan", Token.ATAN);
-        wordOperatorsMap.put("pow", Token.POW);
-        wordOperatorsMap.put("sqrt", Token.SQRT);
+    }
+
+    //functions
+    static {
+        functionsMap.put("sqrt", Token.SQRT);
+        functionsMap.put("pow", Token.POW);
+        functionsMap.put("square", Token.SQUARE);
+        functionsMap.put("sin", Token.SIN);
+        functionsMap.put("cos", Token.COS);
+        functionsMap.put("tan", Token.TAN);
+        functionsMap.put("atan", Token.ATAN);
     }
 
     private void skipWhiteSpace() {
@@ -118,6 +123,7 @@ public class ExpressionParser<T> implements Parser {
             curToken = Token.CONST;
             return;
         }
+
         throw new WrongTokenException(ch, expression);
     }
 
@@ -147,11 +153,12 @@ public class ExpressionParser<T> implements Parser {
                 curToken = Token.VARIABLE;
                 return;
         }
-        if (wordOperatorsMap.containsKey(str)) {
-            curToken = wordOperatorsMap.get(str);
-            match();
+
+        if (functionsMap.containsKey(str)) {
+            curToken = functionsMap.get(str);
             return;
         }
+
         throw new WrongTokenException(str, expression);
     }
 
@@ -206,6 +213,8 @@ public class ExpressionParser<T> implements Parser {
                 return new Abs<>(unaryOperations(true), mode);
             case SQUARE:
                 return new Square<>(unaryOperations(true), mode);
+            case SQRT:
+                return new Sqrt<>(unaryOperations(true), mode);
             case SIN:
                 return new Sin<>(unaryOperations(true), mode);
             case COS:
@@ -259,7 +268,7 @@ public class ExpressionParser<T> implements Parser {
         }
     }
 
-    public TripleExpression parse(String expression) throws ParserException {
+    public TripleExpression<T> parse(String expression) throws ParserException {
 
         this.expression = expression;
         openBraceCounter = 0;

@@ -1,7 +1,6 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations;
 
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.SimpleOperations;
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.SimpleOperations;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
 
 public class Tan<T> extends AbstractUnaryOperator<T> {

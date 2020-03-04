@@ -1,7 +1,7 @@
 package com.linicar.calculator.service.ParserServiceImpl.generic.modes;
 
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.*;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
+import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.EngineeringOperations;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -71,6 +71,7 @@ public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
         return left.subtract(left.divide(right).multiply(right));
     }
 
+    @Override
     public BigDecimal sqrt(BigDecimal x) throws EvaluatingExceptions {
         return x.sqrt(mc);
     }

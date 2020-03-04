@@ -1,7 +1,5 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations;
 
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.TripleExpression;
-
 public class Const<T> implements TripleExpression<T> {
 
     private final T number;

@@ -1,7 +1,7 @@
 package com.linicar.calculator.service.ParserServiceImpl.generic.modes;
 
-import com.linicar.calculator.service.ParserServiceImpl.ParsrInterfaces.*;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
+import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.SimpleOperations;
 
 
 public class DoubleOperations implements SimpleOperations<Double> {
@@ -34,6 +34,7 @@ public class DoubleOperations implements SimpleOperations<Double> {
         return left * right;
     }
 
+    @Override
     public Double negative(Double x) {
         return -x;
     }
@@ -70,10 +71,5 @@ public class DoubleOperations implements SimpleOperations<Double> {
     @Override
     public Double sqrt(Double x) throws EvaluatingExceptions {
         return Math.sqrt(x);
-    }
-
-//    @Override
-    public Double pow(Double x, Double y) throws EvaluatingExceptions {
-        return Math.pow(x, y);
     }
 }
