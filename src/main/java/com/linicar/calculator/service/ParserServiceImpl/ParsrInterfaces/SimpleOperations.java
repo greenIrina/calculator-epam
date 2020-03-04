@@ -23,4 +23,6 @@ public interface SimpleOperations<T> {
 
     T mod(T left, T right) throws EvaluatingExceptions;
 
+    T sqrt(T x) throws EvaluatingExceptions;
+
 }

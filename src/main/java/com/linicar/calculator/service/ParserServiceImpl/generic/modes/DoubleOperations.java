@@ -72,7 +72,7 @@ public class DoubleOperations implements SimpleOperations<Double> {
         return Math.sqrt(x);
     }
 
-    @Override
+//    @Override
     public Double pow(Double x, Double y) throws EvaluatingExceptions {
         return Math.pow(x, y);
     }

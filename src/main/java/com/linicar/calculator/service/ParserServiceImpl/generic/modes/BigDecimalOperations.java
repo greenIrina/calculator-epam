@@ -71,6 +71,10 @@ public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
         return left.subtract(left.divide(right).multiply(right));
     }
 
+    public BigDecimal sqrt(BigDecimal x) throws EvaluatingExceptions {
+        return x.sqrt(mc);
+    }
+
     @Override
     public BigDecimal pow(BigDecimal x, BigDecimal y) throws EvaluatingExceptions {
         return x.pow(y.intValue(), mc);
