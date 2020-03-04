@@ -254,11 +254,7 @@ public class ExpressionParser<T> implements Parser {
             }
         }
     }
-
-    private TripleExpression<T> binaryFunctions(boolean newToken) throws ParserException{
-
-    }
-
+    
     private TripleExpression<T> addSub(boolean newToken) throws ParserException {
         TripleExpression<T> left = binaryOperations(newToken);
 
