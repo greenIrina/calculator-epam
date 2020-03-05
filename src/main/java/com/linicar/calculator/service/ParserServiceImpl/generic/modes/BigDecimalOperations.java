@@ -79,7 +79,7 @@ public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
 
     @Override
     public BigDecimal pow(BigDecimal x, BigDecimal y) throws EvaluatingExceptions {
-        return x.pow(y.intValue(), mc);
+        return BigDecimal.valueOf(Math.pow(x.doubleValue(), y.doubleValue()));
     }
 
     @Override
