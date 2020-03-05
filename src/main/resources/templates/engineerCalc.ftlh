@@ -30,8 +30,8 @@
                     <tr>
                         <td><input type="button" value="abs()" onclick="dis('abs(')"></td>
                         <td><input type="button" value="pow" onclick="dis('^')"></td>
-                        <td><input type="button" value="tan" onclick="dis('tan ')"></td>
-                        <td><input type="button" value="atan" onclick="dis('atan ')"></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td class="digit"><input type="button" value="1" onclick="dis('1')"/></td>
