@@ -9,16 +9,16 @@ import com.linicar.calculator.service.ParserServiceImpl.generic.modes.DoubleOper
 import org.springframework.stereotype.Service;
 
 @Service
-public class SimpleCalcService implements ParserRepository {
-    private final ExpressionParser parser;
+public class SimpleCalcService implements ParserRepository<Double> {
+    private final ExpressionParser<Double> parser;
 
     public SimpleCalcService() {
-        parser = new ExpressionParser(new DoubleOperations());
+        parser = new ExpressionParser<>(new DoubleOperations());
     }
 
     @Override
     public Double evaluate(String expression) throws ParserException, EvaluatingExceptions {
-        TripleExpression tripleExpression = parser.parse(expression);
-        return (Double) tripleExpression.evaluate(0, 0, 0);
+        TripleExpression<Double> tripleExpression = parser.parse(expression);
+        return tripleExpression.evaluate(0.0, 0.0, 0.0);
     }
 }

@@ -11,12 +11,12 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 @Service
-public class EngineeringCalcService implements ParserRepository {
+public class EngineeringCalcService implements ParserRepository<BigDecimal> {
 
-    private final ExpressionParser parser;
+    private final ExpressionParser<BigDecimal> parser;
 
     public EngineeringCalcService() {
-        parser = new ExpressionParser(new BigDecimalOperations());
+        parser = new ExpressionParser<>(new BigDecimalOperations());
     }
 
     @Override
@@ -31,7 +31,7 @@ public class EngineeringCalcService implements ParserRepository {
     }
 
     private BigDecimal evaluate(String expression, BigDecimal x, BigDecimal y, BigDecimal z) throws ParserException, EvaluatingExceptions {
-        TripleExpression tripleExpression = parser.parse(expression);
+        TripleExpression<BigDecimal> tripleExpression = parser.parse(expression);
         return (BigDecimal) tripleExpression.evaluate(x, y, z);
     }
 
