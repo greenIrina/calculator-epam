@@ -77,17 +77,25 @@ public class DoubleOperations implements SimpleOperations<Double> {
     public Double sin(Double x) throws EvaluatingExceptions {
         return Math.sin(x);
     }
+
     @Override
     public Double cos(Double x) throws EvaluatingExceptions {
         return Math.cos(x);
     }
+
     @Override
     public Double tan(Double x) throws EvaluatingExceptions {
         return Math.tan(x);
     }
+
     @Override
     public Double atan(Double x) throws EvaluatingExceptions {
         return Math.atan(x);
+    }
+
+    @Override
+    public Double pow(Double x, Double y) {
+        return Math.pow(x, y);
     }
 
 }
