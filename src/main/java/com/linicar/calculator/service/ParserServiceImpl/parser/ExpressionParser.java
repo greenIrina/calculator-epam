@@ -188,7 +188,6 @@ public class ExpressionParser<T> implements Parser {
                 throw new MissedArgumentException("last", expression, positionInExpression - 1);
             }
         }
-
     }
 
     private TripleExpression<T> unaryOperations(boolean newToken) throws ParserException {
@@ -273,10 +272,10 @@ public class ExpressionParser<T> implements Parser {
             } else if (curToken == Token.MINUS) {
                 left = new Subtract<>(left, binaryOperations(true), mode);
             } else {
-                if(positionInExpression<expression.length()){
-                    throw new WrongTokenException(curToken.toString(), expression);
+                if (curToken == Token.END || curToken == Token.CLOSE_BRACE || curToken == Token.CONST) {
+                    return left;
                 }
-                return left;
+                throw new WrongTokenException(curToken.toString(), expression);
             }
         }
     }
