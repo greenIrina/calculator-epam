@@ -1,26 +1,37 @@
 <#-- @ftlvariable name="message" type="java.lang.String" -->
-<#-- @ftlvariable name="expression" type="java.lang.String" -->
+<#-- @ftlvariable name="expressionEng" type="java.lang.String" -->
 
 <#import "/spring.ftl" as spring>
 <#import "commons.ftlh" as c>
 <@c.page>
-
     <div class="calculator form-box">
         <div class="header">Enter expression</div>
         <div class="body">
             <form method="post" action="">
-                <input type="hidden" name="action" value="calc"/>
+                <input type="hidden" name="action" value="calcEng"/>
                 <table>
                     <tr>
-                        <td colspan="4"><input autofocus type="text" id="expression" name="expression"
-                               value="${expression!}"/></td>
-<#--                        <td><input type="button" value="c" onclick="clear()"/> </td>-->
+                        <td colspan="4"><input autofocus type="text" id="expression" name="expressionEng"
+                                               value="${expressionEng!}"/></td>
+                        <#--                        <td><input type="button" value="c" onclick="clear()"/> </td>-->
                     </tr>
                     <tr>
                         <td><input type="button" value="(" onclick="dis('(')"></td>
                         <td><input type="button" value=")" onclick="dis(')')"></td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="button" value="sin" onclick="dis('sin ')"></td>
+                        <td><input type="button" value="cos" onclick="dis('cos ')"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="sqrt" onclick="dis('sqrt ')"></td>
+                        <td><input type="button" value="pow" onclick="dis('pow ')"></td>
+                        <td><input type="button" value="tan" onclick="dis('tan ')"></td>
+                        <td><input type="button" value="atan" onclick="dis('atan ')"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="button" value="x^2" onclick="dis('square ')"></td>
+                        <td><input type="button" value="pow" onclick="dis('pow ')"></td>
+                        <td><input type="button" value="tan" onclick="dis('tan ')"></td>
+                        <td><input type="button" value="atan" onclick="dis('atan ')"></td>
                     </tr>
                     <tr>
                         <td class="digit"><input type="button" value="1" onclick="dis('1')"/></td>
@@ -47,9 +58,6 @@
                         <td><input type="button" value="*" onclick="dis('*')"/></td>
                     </tr>
                 </table>
-<#--                <div class="button-field">-->
-<#--                    <input type="submit" value="Enter">-->
-<#--                </div>-->
                 <div class="message">
                     <#if message??>
                         ${message}
