@@ -76,6 +76,7 @@ public class ExpressionParser<T> implements Parser {
         tokenMap.put('*', Token.MUL);
         tokenMap.put('(', Token.OPEN_BRACE);
         tokenMap.put(')', Token.CLOSE_BRACE);
+        tokenMap.put('^', Token.POW);
     }
 
     //functions
@@ -245,6 +246,9 @@ public class ExpressionParser<T> implements Parser {
 
         while (true) {
             switch (curToken) {
+                case POW:
+                    left = new Pow<>(left, unaryOperations(true), mode);
+                    continue;
                 case MUL:
                     left = new Multiply<>(left, unaryOperations(true), mode);
                     continue;
@@ -254,8 +258,6 @@ public class ExpressionParser<T> implements Parser {
                 case MOD:
                     left = new Mod<>(left, unaryOperations(true), mode);
                     continue;
-//                case POW:
-//                    left = new Pow<>(left, unaryOperations(true), mode);
                 default:
                     return left;
             }
