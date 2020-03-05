@@ -273,6 +273,9 @@ public class ExpressionParser<T> implements Parser {
             } else if (curToken == Token.MINUS) {
                 left = new Subtract<>(left, binaryOperations(true), mode);
             } else {
+                if(positionInExpression<expression.length()){
+                    throw new WrongTokenException(curToken.toString(), expression);
+                }
                 return left;
             }
         }
