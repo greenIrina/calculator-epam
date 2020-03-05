@@ -80,6 +80,7 @@ public class ExpressionParser<T> implements Parser {
 
     //functions
     static {
+        functionsMap.put("abs", Token.ABS);
         functionsMap.put("sqrt", Token.SQRT);
         functionsMap.put("pow", Token.POW);
         functionsMap.put("square", Token.SQUARE);
@@ -243,18 +244,24 @@ public class ExpressionParser<T> implements Parser {
         TripleExpression<T> left = unaryOperations(newToken);
 
         while (true) {
-            if (curToken == Token.MUL) {
-                left = new Multiply<>(left, unaryOperations(true), mode);
-            } else if (curToken == Token.DIV) {
-                left = new Divide<>(left, unaryOperations(true), mode);
-            } else if (curToken == Token.MOD) {
-                left = new Mod<>(left, unaryOperations(true), mode);
-            } else {
-                return left;
+            switch (curToken) {
+                case MUL:
+                    left = new Multiply<>(left, unaryOperations(true), mode);
+                    continue;
+                case DIV:
+                    left = new Divide<>(left, unaryOperations(true), mode);
+                    continue;
+                case MOD:
+                    left = new Mod<>(left, unaryOperations(true), mode);
+                    continue;
+//                case POW:
+//                    left = new Pow<>(left, unaryOperations(true), mode);
+                default:
+                    return left;
             }
         }
     }
-    
+
     private TripleExpression<T> addSub(boolean newToken) throws ParserException {
         TripleExpression<T> left = binaryOperations(newToken);
 
