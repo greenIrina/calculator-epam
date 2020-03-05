@@ -9,7 +9,8 @@ import java.math.MathContext;
 public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
 
     //точность
-    private static MathContext mc = new MathContext(10);
+    private static int precision = 10;
+    private static MathContext mc = new MathContext(precision);
 
     @Override
     public BigDecimal parseConst(String expression) throws ParserException {
@@ -83,21 +84,21 @@ public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
 
     @Override
     public BigDecimal sin(BigDecimal x) throws EvaluatingExceptions {
-        return null;
+        return BigDecimal.valueOf(Math.sin(x.doubleValue()));
     }
 
     @Override
     public BigDecimal cos(BigDecimal x) throws EvaluatingExceptions {
-        return null;
+        return BigDecimal.valueOf(Math.cos(x.doubleValue()));
     }
 
     @Override
     public BigDecimal tan(BigDecimal x) throws EvaluatingExceptions {
-        return null;
+        return BigDecimal.valueOf(Math.tan(x.doubleValue()));
     }
 
     @Override
     public BigDecimal atan(BigDecimal x) throws EvaluatingExceptions {
-        return null;
+        return BigDecimal.valueOf(Math.atan(x.doubleValue()));
     }
 }

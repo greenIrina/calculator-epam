@@ -30,13 +30,13 @@ public interface Operations<T> {
 
     //Engineering operation
 
-    T sin(T x) throws EvaluatingExceptions, UnsupportedModeException;
+    T sin(T x) throws EvaluatingExceptions;
 
-    T cos(T x) throws EvaluatingExceptions, UnsupportedModeException;
+    T cos(T x) throws EvaluatingExceptions;
 
-    T tan(T x) throws EvaluatingExceptions, UnsupportedModeException;
+    T tan(T x) throws EvaluatingExceptions;
 
-    T atan(T x) throws EvaluatingExceptions, UnsupportedModeException;
+    T atan(T x) throws EvaluatingExceptions;
 
     T pow(T x, T y) throws EvaluatingExceptions, UnsupportedModeException;
 }

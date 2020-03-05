@@ -18,17 +18,17 @@
                     <tr>
                         <td><input type="button" value="(" onclick="dis('(')"></td>
                         <td><input type="button" value=")" onclick="dis(')')"></td>
-                        <td><input type="button" value="sin" onclick="dis('sin ')"></td>
-                        <td><input type="button" value="cos" onclick="dis('cos ')"></td>
+                        <td><input type="button" value="sin()" onclick="dis('sin(')"></td>
+                        <td><input type="button" value="cos()" onclick="dis('cos(')"></td>
                     </tr>
                     <tr>
-                        <td><input type="button" value="sqrt" onclick="dis('sqrt ')"></td>
+                        <td><input type="button" value="sqrt()" onclick="dis('sqrt(')"></td>
+                        <td><input type="button" value="square()" onclick="dis('square(')"></td>
+                        <td><input type="button" value="tan()" onclick="dis('tan(')"></td>
+                        <td><input type="button" value="atan()" onclick="dis('atan(')"></td>
+                    </tr>
+                    <tr>
                         <td><input type="button" value="pow" onclick="dis('pow ')"></td>
-                        <td><input type="button" value="tan" onclick="dis('tan ')"></td>
-                        <td><input type="button" value="atan" onclick="dis('atan ')"></td>
-                    </tr>
-                    <tr>
-                        <td><input type="button" value="x^2" onclick="dis('square ')"></td>
                         <td><input type="button" value="pow" onclick="dis('pow ')"></td>
                         <td><input type="button" value="tan" onclick="dis('tan ')"></td>
                         <td><input type="button" value="atan" onclick="dis('atan ')"></td>

@@ -54,5 +54,4 @@ public class EngineeringCalcService implements ParserRepository<BigDecimal> {
         }
         return arguments;
     }
-
 }

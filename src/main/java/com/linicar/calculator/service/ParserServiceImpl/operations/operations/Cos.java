@@ -12,6 +12,6 @@ public class Cos<T> extends AbstractUnaryOperator<T> {
     }
 
     protected T apply(T x) throws EvaluatingExceptions {
-        return mode.abs(x);
+        return mode.cos(x);
     }
 }

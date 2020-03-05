@@ -12,6 +12,6 @@ public class Tan<T> extends AbstractUnaryOperator<T> {
     }
 
     protected T apply(T x) throws EvaluatingExceptions {
-        return mode.abs(x);
+        return mode.tan(x);
     }
 }
