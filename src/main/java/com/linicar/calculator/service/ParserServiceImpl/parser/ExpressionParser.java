@@ -34,6 +34,7 @@ public class ExpressionParser<T> implements Parser<T> {
         MINUS("minus"),
         END("end"),
         ERROR("err"),
+        COMMA("comma"),
         VARIABLE("value"),
         CONST("value"),
         SQRT("operator"),
@@ -112,8 +113,17 @@ public class ExpressionParser<T> implements Parser<T> {
 
         prevToken = curToken;
 
+        if (ch == ',') {
+            curToken = Token.COMMA;
+            return;
+        }
+
         if (tokenMap.containsKey(ch)) {
             curToken = tokenMap.get(ch);
+//            while (curToken == Token.CLOSE_BRACE) {
+//                openBraceCounter--;
+//                nextToken();
+//            }
             match();
             return;
         }
@@ -128,6 +138,7 @@ public class ExpressionParser<T> implements Parser<T> {
             curToken = Token.CONST;
             return;
         }
+
 
         throw new WrongTokenException(ch, expression);
     }
@@ -235,9 +246,14 @@ public class ExpressionParser<T> implements Parser<T> {
                 return new Tan<>(unaryOperations(true), mode);
             case ATAN:
                 return new Atan<>(unaryOperations(true), mode);
+            case LOG:
+                return new Log<>(unaryOperations(true), unaryOperations(true), mode);
             case OPEN_BRACE:
                 openBraceCounter++;
                 TripleExpression<T> e = addSub(true);
+                if (curToken == Token.COMMA) {
+                    return e;
+                }
                 if (curToken == Token.CLOSE_BRACE) {
                     openBraceCounter--;
                     nextToken();
@@ -249,7 +265,6 @@ public class ExpressionParser<T> implements Parser<T> {
                 throw new MissedArgumentException("last", expression, positionInExpression - 1);
         }
     }
-
 
     private TripleExpression<T> binaryOperations(boolean newToken) throws ParserException {
         TripleExpression<T> left = unaryOperations(newToken);
@@ -274,16 +289,6 @@ public class ExpressionParser<T> implements Parser<T> {
         }
     }
 
-    private TripleExpression<T> functions(boolean newToken) throws ParserException {
-        TripleExpression<T> left = unaryOperations(newToken);
-        while(true){
-            switch (curToken){
-                case LOG:
-                    left = new Log<>(unaryOperations(true), unaryOperations(true), mode);
-            }
-        }
-    }
-
     private TripleExpression<T> addSub(boolean newToken) throws ParserException {
         TripleExpression<T> left = binaryOperations(newToken);
 
@@ -296,7 +301,7 @@ public class ExpressionParser<T> implements Parser<T> {
                     left = new Subtract<>(left, binaryOperations(true), mode);
                     break;
                 default:
-                    if (curToken != Token.END && curToken != Token.CLOSE_BRACE) {
+                    if (curToken != Token.END && curToken != Token.CLOSE_BRACE && curToken != Token.COMMA) {
                         throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
                     }
                     return left;
