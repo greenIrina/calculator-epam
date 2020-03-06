@@ -76,6 +76,7 @@ public class ExpressionParser<T> implements Parser<T> {
         tokenMap.put('(', Token.OPEN_BRACE);
         tokenMap.put(')', Token.CLOSE_BRACE);
         tokenMap.put('^', Token.POW);
+        tokenMap.put('!', Token.FACT);
     }
 
     //functions
@@ -109,10 +110,7 @@ public class ExpressionParser<T> implements Parser<T> {
         char ch = expression.charAt(positionInExpression++);
 
         prevToken = curToken;
-        if (ch == '!') {
-            curToken = Token.FACT;
-            return;
-        }
+
         if (tokenMap.containsKey(ch)) {
             curToken = tokenMap.get(ch);
             match();
@@ -221,7 +219,7 @@ public class ExpressionParser<T> implements Parser<T> {
                 }
                 return new Negative<>(unaryOperations(true), mode);
             case FACT:
-                return new Factorial<>(unaryOperations(true), mode);
+                return new Factorial<>(unaryOperations(false), mode);
             case ABS:
                 return new Abs<>(unaryOperations(true), mode);
             case SQUARE:
@@ -278,7 +276,36 @@ public class ExpressionParser<T> implements Parser<T> {
         TripleExpression<T> left = binaryOperations(newToken);
 
         while (true) {
-            if (curToken == Token.PLUS) {
+            switch (curToken) {
+                case PLUS:
+                    left = new Add<>(left, binaryOperations(true), mode);
+                    break;
+                case MINUS:
+                    left = new Subtract<>(left, binaryOperations(true), mode);
+                    break;
+                default:
+                    if (curToken != Token.END && curToken != Token.CLOSE_BRACE) {
+                        throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
+                    }
+                    return left;
+            }
+//            if (curToken == Token.PLUS) {
+//                left = new Add<>(left, binaryOperations(true), mode);
+//            } else if (curToken == Token.MINUS) {
+//                left = new Subtract<>(left, binaryOperations(true), mode);
+//            } else {
+//                if (curToken == Token.END || curToken == Token.CLOSE_BRACE || curToken == Token.CONST) {
+//                    return left;
+//                }
+//                throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
+//            }
+        }
+    }
+
+    private TripleExpression<T> postfixOperations(boolean newToken) throws ParserException {
+        TripleExpression<T> left = addSub(newToken);
+        while (true) {
+            if (curToken == Token.FACT) {
                 left = new Add<>(left, binaryOperations(true), mode);
             } else if (curToken == Token.MINUS) {
                 left = new Subtract<>(left, binaryOperations(true), mode);
@@ -289,6 +316,7 @@ public class ExpressionParser<T> implements Parser<T> {
                 throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
             }
         }
+
     }
 
     public TripleExpression<T> parse(String expression) throws ParserException {

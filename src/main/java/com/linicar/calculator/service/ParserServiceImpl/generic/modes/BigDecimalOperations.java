@@ -109,7 +109,7 @@ public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
 
     private int factorialFinder(BigDecimal y) throws NotIntegerFactorialException {
         int ans = 1, cnt = 1;
-        double x = y.doubleValue();
+        double x = y.doubleValue();//todo: почему даблы?
         if (x == Math.floor(x)) {
             while (cnt <= x) {
                 ans += ++cnt;
