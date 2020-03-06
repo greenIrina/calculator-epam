@@ -42,7 +42,8 @@ public class ExpressionParser<T> implements Parser<T> {
         SIN("operator"),
         COS("operator"),
         TAN("operator"),
-        ATAN("operator");
+        ATAN("operator"),
+        LOG("operator");
 
         final String type;
 
@@ -88,6 +89,7 @@ public class ExpressionParser<T> implements Parser<T> {
         functionsMap.put("cos", Token.COS);
         functionsMap.put("tan", Token.TAN);
         functionsMap.put("atan", Token.ATAN);
+        functionsMap.put("log", Token.LOG);
     }
 
     private void skipWhiteSpace() {
@@ -248,9 +250,6 @@ public class ExpressionParser<T> implements Parser<T> {
         }
     }
 
-    private TripleExpression<T> functions(boolean newToken) throws ParserException {
-        return null;
-    }
 
     private TripleExpression<T> binaryOperations(boolean newToken) throws ParserException {
         TripleExpression<T> left = unaryOperations(newToken);
@@ -271,6 +270,16 @@ public class ExpressionParser<T> implements Parser<T> {
                     continue;
                 default:
                     return left;
+            }
+        }
+    }
+
+    private TripleExpression<T> functions(boolean newToken) throws ParserException {
+        TripleExpression<T> left = unaryOperations(newToken);
+        while(true){
+            switch (curToken){
+                case LOG:
+                    left = new Log<>(unaryOperations(true), unaryOperations(true), mode);
             }
         }
     }

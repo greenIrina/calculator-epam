@@ -29,9 +29,10 @@ public interface Operations<T> {
 
     T sqrt(T x) throws EvaluatingExceptions;
 
+
     //Engineering operation
 
-    T factorial(T x) throws EvaluatingExceptions, NotIntegerFactorialException;
+    T factorial(T x) throws EvaluatingExceptions;
 
     T sin(T x) throws EvaluatingExceptions;
 
@@ -41,5 +42,7 @@ public interface Operations<T> {
 
     T atan(T x) throws EvaluatingExceptions;
 
-    T pow(T x, T y) throws EvaluatingExceptions, UnsupportedModeException;
+    T pow(T x, T y) throws EvaluatingExceptions;
+
+    T log(T x, T y) throws EvaluatingExceptions;
 }
