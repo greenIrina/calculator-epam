@@ -14,7 +14,7 @@ public class ExpressionParser<T> implements Parser<T> {
     private int openBraceCounter;
     private String expression;
     private Operations<T> mode;
-    private int positionInExpression;
+    private int posInExpression;
 
     private T value;
     private String nameOfVariable;
@@ -91,9 +91,9 @@ public class ExpressionParser<T> implements Parser<T> {
     }
 
     private void skipWhiteSpace() {
-        while (positionInExpression < expression.length() &&
-                Character.isWhitespace(expression.charAt(positionInExpression))) {
-            positionInExpression++;
+        while (posInExpression < expression.length() &&
+                Character.isWhitespace(expression.charAt(posInExpression))) {
+            posInExpression++;
         }
     }
 
@@ -101,12 +101,12 @@ public class ExpressionParser<T> implements Parser<T> {
 
         skipWhiteSpace();
 
-        if (positionInExpression >= expression.length()) {
+        if (posInExpression >= expression.length()) {
             curToken = Token.END;
             return;
         }
 
-        char ch = expression.charAt(positionInExpression++);
+        char ch = expression.charAt(posInExpression++);
 
         prevToken = curToken;
         if (ch == '!') {
@@ -134,22 +134,22 @@ public class ExpressionParser<T> implements Parser<T> {
     }
 
     private T getConst() throws ParserException {
-        int left = positionInExpression - 1;
-        while (positionInExpression < expression.length() &&
-                (Character.isDigit(expression.charAt(positionInExpression)) ||
-                        expression.charAt(positionInExpression) == '.')) {
-            positionInExpression++;
+        int left = posInExpression - 1;
+        while (posInExpression < expression.length() &&
+                (Character.isDigit(expression.charAt(posInExpression)) ||
+                        expression.charAt(posInExpression) == '.')) {
+            posInExpression++;
         }
-        return mode.parseConst(expression.substring(left, positionInExpression));
+        return mode.parseConst(expression.substring(left, posInExpression));
     }
 
     private void getId() throws ParserException {
-        int left = positionInExpression - 1;
-        while (positionInExpression < expression.length() &&
-                Character.isLetter(expression.charAt(positionInExpression))) {
-            positionInExpression++;
+        int left = posInExpression - 1;
+        while (posInExpression < expression.length() &&
+                Character.isLetter(expression.charAt(posInExpression))) {
+            posInExpression++;
         }
-        String str = expression.substring(left, positionInExpression);
+        String str = expression.substring(left, posInExpression);
 
         switch (str) {
             case "x":
@@ -177,24 +177,24 @@ public class ExpressionParser<T> implements Parser<T> {
     private void match() throws ParserException {
         if (curToken.type.equals("operator")) {
             if (prevToken == Token.OPEN_BRACE || prevToken == Token.ERROR) {
-                throw new MissedArgumentException("first", expression, positionInExpression - 1);
+                throw new MissedArgumentException("first", expression, posInExpression - 1);
             }
             if (prevToken.type.equals("operator")) {
-                throw new MissedArgumentException("middle", expression, positionInExpression - 1);
+                throw new MissedArgumentException("middle", expression, posInExpression - 1);
             }
         }
 
         if (curToken == Token.OPEN_BRACE
                 && (prevToken == Token.CLOSE_BRACE || prevToken.type.equals("value"))) {
-            throw new MissedOperatorException(expression, positionInExpression - 1);
+            throw new MissedOperatorException(expression, posInExpression - 1);
         }
 
         if (curToken == Token.CLOSE_BRACE) {
             if (openBraceCounter == 0) {
-                throw new WrongBraceException("closing", expression, positionInExpression - 1);
+                throw new WrongBraceException("closing", expression, posInExpression - 1);
             }
             if (prevToken.type.equals("operator") || prevToken.type.equals("minus")) {
-                throw new MissedArgumentException("last", expression, positionInExpression - 1);
+                throw new MissedArgumentException("last", expression, posInExpression - 1);
             }
         }
     }
@@ -213,7 +213,7 @@ public class ExpressionParser<T> implements Parser<T> {
                 nextToken();
                 return new Variable<>(name);
             case MINUS:
-                if (Character.isDigit(expression.charAt(positionInExpression))) {
+                if (Character.isDigit(expression.charAt(posInExpression))) {
                     curToken = Token.CONST;
                     value = getConst();
                     nextToken();
@@ -243,11 +243,11 @@ public class ExpressionParser<T> implements Parser<T> {
                     openBraceCounter--;
                     nextToken();
                 } else {
-                    throw new WrongBraceException("opening", expression, positionInExpression - 1);
+                    throw new WrongBraceException("opening", expression, posInExpression - 1);
                 }
                 return e;
             default:
-                throw new MissedArgumentException("last", expression, positionInExpression - 1);
+                throw new MissedArgumentException("last", expression, posInExpression - 1);
         }
     }
 
@@ -283,10 +283,10 @@ public class ExpressionParser<T> implements Parser<T> {
             } else if (curToken == Token.MINUS) {
                 left = new Subtract<>(left, binaryOperations(true), mode);
             } else {
-                if (curToken == Token.END || curToken == Token.CLOSE_BRACE || curToken == Token.CONST) {
-                    return left;
+                if (curToken != Token.END && curToken != Token.CLOSE_BRACE && curToken != Token.CONST || (curToken == Token.CONST && prevToken == Token.CONST)) {
+                    throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
                 }
-                throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
+                return left;
             }
         }
     }
@@ -295,7 +295,7 @@ public class ExpressionParser<T> implements Parser<T> {
 
         this.expression = expression;
         openBraceCounter = 0;
-        positionInExpression = 0;
+        posInExpression = 0;
         curToken = Token.ERROR;
         nextToken();
 
