@@ -74,6 +74,11 @@ public class DoubleOperations implements SimpleOperations<Double> {
     }
 
     @Override
+    public Double factorial(Double x) throws EvaluatingExceptions, NotIntegerFactorialException {
+        return (double) factorialFinder(x);
+    }
+
+    @Override
     public Double sin(Double x) throws EvaluatingExceptions {
         return Math.sin(x);
     }
@@ -98,4 +103,15 @@ public class DoubleOperations implements SimpleOperations<Double> {
         return Math.pow(x, y);
     }
 
+    private int factorialFinder(Double x) throws NotIntegerFactorialException {
+        int ans = 1, cnt = 1;
+        if (x == Math.floor(x)) {
+            while (cnt <= x) {
+                ans += ++cnt;
+            }
+            return ans;
+        } else {
+            throw new NotIntegerFactorialException("Can't find factorial of non-integer value " + x.toString());
+        }
+    }
 }

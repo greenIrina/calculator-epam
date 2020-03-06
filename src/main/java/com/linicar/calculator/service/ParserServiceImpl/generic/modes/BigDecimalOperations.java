@@ -78,6 +78,11 @@ public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
     }
 
     @Override
+    public BigDecimal factorial(BigDecimal x) throws EvaluatingExceptions, NotIntegerFactorialException {
+        return BigDecimal.valueOf(factorialFinder(x));
+    }
+
+    @Override
     public BigDecimal pow(BigDecimal x, BigDecimal y) throws EvaluatingExceptions {
         return BigDecimal.valueOf(Math.pow(x.doubleValue(), y.doubleValue()));
     }
@@ -100,5 +105,18 @@ public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
     @Override
     public BigDecimal atan(BigDecimal x) throws EvaluatingExceptions {
         return BigDecimal.valueOf(Math.atan(x.doubleValue()));
+    }
+
+    private int factorialFinder(BigDecimal y) throws NotIntegerFactorialException {
+        int ans = 1, cnt = 1;
+        double x = y.doubleValue();
+        if (x == Math.floor(x)) {
+            while (cnt <= x) {
+                ans += ++cnt;
+            }
+            return ans;
+        } else {
+            throw new NotIntegerFactorialException("Can't find factorial of non-integer value " + x);
+        }
     }
 }

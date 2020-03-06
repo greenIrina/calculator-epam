@@ -1,16 +1,15 @@
 package com.linicar.calculator.service.ParserServiceImpl.parser;
 
-import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
-import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.SimpleOperations;
-import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
+import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.*;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ExpressionParser<T> implements Parser {
+public class ExpressionParser<T> implements Parser<T> {
 
     private int openBraceCounter;
     private String expression;
@@ -39,7 +38,7 @@ public class ExpressionParser<T> implements Parser {
         CONST("value"),
         SQRT("operator"),
         POW("operator"),
-        FACTORIAL("operator"),
+        FACT("operator"),
         SIN("operator"),
         COS("operator"),
         TAN("operator"),
@@ -52,7 +51,7 @@ public class ExpressionParser<T> implements Parser {
         }
     }
 
-    private static Map<String, BigDecimal> constantMap = new HashMap<>();
+    private static Map<String, Double> constantMap = new HashMap<>();
 
     private static Map<Character, Token> tokenMap = new HashMap<>();
 
@@ -64,8 +63,8 @@ public class ExpressionParser<T> implements Parser {
 
     //Constants
     static {
-        constantMap.put("e", new BigDecimal("2.7"));
-        constantMap.put("pi", new BigDecimal("3.14"));
+        constantMap.put("e", Math.E);
+        constantMap.put("pi", Math.PI);
     }
 
     //Operators
@@ -108,8 +107,12 @@ public class ExpressionParser<T> implements Parser {
         }
 
         char ch = expression.charAt(positionInExpression++);
-        prevToken = curToken;
 
+        prevToken = curToken;
+        if (ch == '!') {
+            curToken = Token.FACT;
+            return;
+        }
         if (tokenMap.containsKey(ch)) {
             curToken = tokenMap.get(ch);
             match();
@@ -211,6 +214,8 @@ public class ExpressionParser<T> implements Parser {
                     return new Const<>(value);
                 }
                 return new Negative<>(unaryOperations(true), mode);
+            case FACT:
+                return new Factorial<>(unaryOperations(true), mode);
             case ABS:
                 return new Abs<>(unaryOperations(true), mode);
             case SQUARE:

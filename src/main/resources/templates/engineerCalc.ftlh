@@ -31,7 +31,7 @@
                     <tr>
                         <td><button name="button" value="abs()" onclick="dis(' abs(')">abs()</button></td>
                         <td><button name="button" value="x^y" onclick="dis('^')">x<sup>y</sup></button></td>
-                        <td></td>
+                        <td><button name="button" value="x!" onclick="dis('!')">x!</button></td>
                         <td></td>
                     </tr>
                     <tr>

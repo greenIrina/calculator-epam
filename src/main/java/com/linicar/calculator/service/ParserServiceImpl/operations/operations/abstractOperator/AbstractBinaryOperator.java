@@ -18,7 +18,7 @@ public abstract class AbstractBinaryOperator<T> implements TripleExpression<T> {
 
     protected abstract T apply(T x, T y) throws EvaluatingExceptions, UnsupportedModeException;
 
-    public T evaluate(T x, T y, T z) throws EvaluatingExceptions, UnsupportedModeException {
+    public T evaluate(T x, T y, T z) throws EvaluatingExceptions, UnsupportedModeException, NotIntegerFactorialException {
         return apply(firstOperand.evaluate(x, y, z), secondOperand.evaluate(x, y, z));
     }
 }

@@ -13,9 +13,9 @@ public abstract class AbstractUnaryOperator<T> implements TripleExpression<T> {
         this.mode = mode;
     }
 
-    protected abstract T apply(T x) throws EvaluatingExceptions;
+    protected abstract T apply(T x) throws EvaluatingExceptions, NotIntegerFactorialException;
 
-    public T evaluate(T x, T y, T z) throws EvaluatingExceptions, UnsupportedModeException {
+    public T evaluate(T x, T y, T z) throws EvaluatingExceptions, UnsupportedModeException, NotIntegerFactorialException {
         return apply(operand.evaluate(x, y, z));
     }
 

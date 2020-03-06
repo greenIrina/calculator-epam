@@ -1,6 +1,7 @@
 package com.linicar.calculator.service.ParserServiceImpl.generic.interfaces;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
+import com.linicar.calculator.service.ParserServiceImpl.exceptions.NotIntegerFactorialException;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserException;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedModeException;
 
@@ -29,6 +30,8 @@ public interface Operations<T> {
     T sqrt(T x) throws EvaluatingExceptions;
 
     //Engineering operation
+
+    T factorial(T x) throws EvaluatingExceptions, NotIntegerFactorialException;
 
     T sin(T x) throws EvaluatingExceptions;
 
