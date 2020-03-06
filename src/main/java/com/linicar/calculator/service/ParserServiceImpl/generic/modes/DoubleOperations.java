@@ -1,10 +1,10 @@
 package com.linicar.calculator.service.ParserServiceImpl.generic.modes;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
-import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.SimpleOperations;
+import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
 
 
-public class DoubleOperations implements SimpleOperations<Double> {
+public class DoubleOperations implements Operations<Double> {
     @Override
     public Double parseConst(String expression) throws ParserException {
         try {

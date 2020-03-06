@@ -1,10 +1,9 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
 
+import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
 import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
-import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.SimpleOperations;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
-import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractBinaryOperator;
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractBinaryOperator;
 
 public class Add<T> extends AbstractBinaryOperator<T> {
 

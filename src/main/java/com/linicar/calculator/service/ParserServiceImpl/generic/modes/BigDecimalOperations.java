@@ -1,12 +1,12 @@
 package com.linicar.calculator.service.ParserServiceImpl.generic.modes;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
-import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.EngineeringOperations;
+import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
 
-public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
+public class BigDecimalOperations implements Operations<BigDecimal> {
 
     //точность
     private static int precision = 10;

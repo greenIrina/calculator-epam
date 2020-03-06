@@ -41,5 +41,5 @@ public interface Operations<T> {
 
     T atan(T x) throws EvaluatingExceptions;
 
-    T pow(T x, T y) throws EvaluatingExceptions, UnsupportedModeException;
+    T pow(T x, T y) throws EvaluatingExceptions;
 }
