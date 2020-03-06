@@ -76,7 +76,6 @@ public class ExpressionParser<T> implements Parser<T> {
         tokenMap.put('(', Token.OPEN_BRACE);
         tokenMap.put(')', Token.CLOSE_BRACE);
         tokenMap.put('^', Token.POW);
-        tokenMap.put('!', Token.FACT);
     }
 
     //functions
@@ -249,6 +248,10 @@ public class ExpressionParser<T> implements Parser<T> {
         }
     }
 
+    private TripleExpression<T> functions(boolean newToken) throws ParserException {
+        return null;
+    }
+
     private TripleExpression<T> binaryOperations(boolean newToken) throws ParserException {
         TripleExpression<T> left = unaryOperations(newToken);
 
@@ -289,34 +292,7 @@ public class ExpressionParser<T> implements Parser<T> {
                     }
                     return left;
             }
-//            if (curToken == Token.PLUS) {
-//                left = new Add<>(left, binaryOperations(true), mode);
-//            } else if (curToken == Token.MINUS) {
-//                left = new Subtract<>(left, binaryOperations(true), mode);
-//            } else {
-//                if (curToken == Token.END || curToken == Token.CLOSE_BRACE || curToken == Token.CONST) {
-//                    return left;
-//                }
-//                throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
-//            }
         }
-    }
-
-    private TripleExpression<T> postfixOperations(boolean newToken) throws ParserException {
-        TripleExpression<T> left = addSub(newToken);
-        while (true) {
-            if (curToken == Token.FACT) {
-                left = new Add<>(left, binaryOperations(true), mode);
-            } else if (curToken == Token.MINUS) {
-                left = new Subtract<>(left, binaryOperations(true), mode);
-            } else {
-                if (curToken == Token.END || curToken == Token.CLOSE_BRACE || curToken == Token.CONST) {
-                    return left;
-                }
-                throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
-            }
-        }
-
     }
 
     public TripleExpression<T> parse(String expression) throws ParserException {

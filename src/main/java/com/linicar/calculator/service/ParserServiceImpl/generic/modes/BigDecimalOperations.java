@@ -119,4 +119,13 @@ public class BigDecimalOperations implements EngineeringOperations<BigDecimal> {
             throw new NotIntegerFactorialException("Can't find factorial of non-integer value " + x);
         }
     }
+
+    private BigDecimal log(BigDecimal b, BigDecimal a) throws EvaluatingExceptions {
+        try {
+            return BigDecimal.valueOf(Math.log(a.doubleValue()))
+                    .divide(BigDecimal.valueOf(Math.log(b.doubleValue())));
+        } catch (ArithmeticException ex) {
+            throw new DivisionByZeroException();
+        }
+    }
 }
