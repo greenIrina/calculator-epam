@@ -1,8 +1,9 @@
 /* datatable */
 .datatable table {
-    width: 100%;
+    width: 80%;
     text-align: center;
     border-collapse: collapse;
+    margin: 1rem;
 }
 
 .datatable .caption {

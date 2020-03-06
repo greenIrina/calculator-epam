@@ -51,7 +51,7 @@ public class ExpressionParser<T> implements Parser<T> {
         }
     }
 
-    private static Map<String, Double> constantMap = new HashMap<>();
+    private static Map<String, BigDecimal> constantMap = new HashMap<>();
 
     private static Map<Character, Token> tokenMap = new HashMap<>();
 
@@ -63,8 +63,8 @@ public class ExpressionParser<T> implements Parser<T> {
 
     //Constants
     static {
-        constantMap.put("e", Math.E);
-        constantMap.put("pi", Math.PI);
+        constantMap.put("e", BigDecimal.valueOf(Math.E));
+        constantMap.put("pi", BigDecimal.valueOf(Math.PI));
     }
 
     //Operators
@@ -158,6 +158,12 @@ public class ExpressionParser<T> implements Parser<T> {
                 nameOfVariable = str;
                 curToken = Token.VARIABLE;
                 return;
+        }
+
+        if (constantMap.containsKey(str)) {
+            value = (T) constantMap.get(str);
+            curToken = Token.CONST;
+            return;
         }
 
         if (functionsMap.containsKey(str)) {
