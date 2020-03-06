@@ -31,7 +31,7 @@
     height: 2rem;
 }
 
-.calculator table .digit input {
+.calculator table .digit  {
     background-color: lightgreen;
     color: #333333;
     border-radius: var(--border-radius);
@@ -52,6 +52,7 @@
     width: 100%;
     height: 2rem;
     padding-left: 0.2rem;
+    width: 98%;
 }
 
 .calculator table {
@@ -60,12 +61,21 @@
     /*width: 32rem;*/
 }
 
-.calculator input[type=button]:active {
+.calculator button {
+    background-color: green;
+    color: lightgreen;
+    border: solid black 2px;
+    width: 7rem;
+    height: 2rem;
+}
+
+.calculator button:hover {
+    background-color: #003300;
+    color: white;
+}
+
+.calculator button:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
-}
-.calculator input[type=button]:hover {
-    background-color: #003300;
-    color: white;
 }

@@ -32,7 +32,7 @@ public class EngineeringCalcService implements ParserRepository<BigDecimal> {
 
     private BigDecimal evaluate(String expression, BigDecimal x, BigDecimal y, BigDecimal z) throws ParserException, EvaluatingExceptions {
         TripleExpression<BigDecimal> tripleExpression = parser.parse(expression);
-        return (BigDecimal) tripleExpression.evaluate(x, y, z);
+        return tripleExpression.evaluate(x, y, z);
     }
 
     private BigDecimal[] getArguments(String expression) throws ParserException, EvaluatingExceptions {

@@ -275,7 +275,7 @@ public class ExpressionParser<T> implements Parser {
                 if (curToken == Token.END || curToken == Token.CLOSE_BRACE || curToken == Token.CONST) {
                     return left;
                 }
-                throw new WrongTokenException(curToken.toString(), expression);
+                throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
             }
         }
     }
