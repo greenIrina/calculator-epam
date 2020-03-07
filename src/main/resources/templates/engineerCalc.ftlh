@@ -16,21 +16,43 @@
                         <td><input type="submit" style="margin-bottom: 1rem" value="="></td>
                     </tr>
                     <tr>
-                        <td><button name="button" value="(" onclick="dis('(')">(</button></td>
-                        <td><button name="button" value=")" onclick="dis(')')">)</button></td>
-                        <td><button name="button" value="sin()" onclick="dis(' sin(')">sin()</button></td>
-                        <td><button name="button" value="cos()" onclick="dis(' cos(')">cos()</button></td>
+                        <td>
+                            <button name="button" value="(" onclick="dis('(')">(</button>
+                        </td>
+                        <td>
+                            <button name="button" value=")" onclick="dis(')')">)</button>
+                        </td>
+                        <td>
+                            <button name="button" value="sin()" onclick="dis(' sin(')">sin()</button>
+                        </td>
+                        <td>
+                            <button name="button" value="cos()" onclick="dis(' cos(')">cos()</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td><button name="button" value="sqrt()" onclick="dis(' sqrt(')">sqrt()</button></td>
-                        <td><button name="button" value="x^2" onclick="dis('^2 ')">x<sup>2</sup></button></td>
-                        <td><button name="button" value="tan()" onclick="dis(' tan(')">tan()</button></td>
-                        <td><button name="button" value="atan()" onclick="dis(' atan(')">atan()</button></td>
+                        <td>
+                            <button name="button" value="sqrt()" onclick="dis(' sqrt(')">sqrt()</button>
+                        </td>
+                        <td>
+                            <button name="button" value="x^2" onclick="dis('^2 ')">x<sup>2</sup></button>
+                        </td>
+                        <td>
+                            <button name="button" value="tan()" onclick="dis(' tan(')">tan()</button>
+                        </td>
+                        <td>
+                            <button name="button" value="atan()" onclick="dis(' atan(')">atan()</button>
+                        </td>
                     </tr>
                     <tr>
-                        <td><button name="button" value="abs()" onclick="dis(' abs(')">abs()</button></td>
-                        <td><button name="button" value="x^y" onclick="dis('^')">x<sup>y</sup></button></td>
-                        <td><button name="button" value="factorial()" onclick="dis('factorial(')">factorial()</button></td>
+                        <td>
+                            <button name="button" value="abs()" onclick="dis(' abs(')">abs()</button>
+                        </td>
+                        <td>
+                            <button name="button" value="x^y" onclick="dis('^')">x<sup>y</sup></button>
+                        </td>
+                        <td>
+                            <button name="button" value="factorial()" onclick="dis('factorial(')">factorial()</button>
+                        </td>
                         <td></td>
                     </tr>
                     <tr>

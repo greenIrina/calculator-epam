@@ -2,7 +2,7 @@
 .form-box {
     width: 25rem;
     margin: 0 auto;
-    background-image: linear-gradient(#b9efb9,#6a68de);
+    background-image: linear-gradient(#b9efb9, #6a68de);
     border: #003300;
     padding: 1rem;
 }
@@ -17,6 +17,7 @@
     font-family: "Gill Sans MT Condensed", sans-serif;
     font-size: xx-large;
 }
+
 .form-box .message {
     margin: 1rem;
 }

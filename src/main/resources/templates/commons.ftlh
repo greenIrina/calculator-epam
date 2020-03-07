@@ -16,7 +16,7 @@
             }
 
             function clr() {
-                document.getElementById("expresion").value ="";
+                document.getElementById("expresion").value = "";
             }
         </script>
     </head>
@@ -26,8 +26,8 @@
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/base">Base Calculator</a></li>
-                <li><a href="/engineer">Advanced Calculator</a> </li>
-                <li><a href="/help">Help Page</a> </li>
+                <li><a href="/engineer">Advanced Calculator</a></li>
+                <li><a href="/help">Help Page</a></li>
             </ul>
         </nav>
     </header>

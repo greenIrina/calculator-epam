@@ -1,8 +1,8 @@
-package com.linicar.calculator.service.ParserServiceImpl.generic.modes;
+package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.IllegalArgumentException;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
-import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Operations;
 
 
 public class DoubleOperations implements Operations {

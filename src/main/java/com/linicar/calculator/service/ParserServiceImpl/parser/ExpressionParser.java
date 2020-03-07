@@ -1,7 +1,7 @@
 package com.linicar.calculator.service.ParserServiceImpl.parser;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
-import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Operations;
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.*;
 
@@ -140,7 +140,6 @@ public class ExpressionParser implements Parser {
 
         throw new WrongTokenException(ch, expression);
     }
-
 
     private Double getConst() throws ParserException {
         int left = posInExpression - 1;

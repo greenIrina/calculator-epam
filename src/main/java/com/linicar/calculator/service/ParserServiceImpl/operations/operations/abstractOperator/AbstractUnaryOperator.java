@@ -1,9 +1,7 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.NotIntegerFactorialException;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedModeException;
-import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 
 public abstract class AbstractUnaryOperator implements TripleExpression {
