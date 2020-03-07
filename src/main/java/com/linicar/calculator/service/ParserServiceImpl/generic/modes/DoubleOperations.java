@@ -103,11 +103,16 @@ public class DoubleOperations implements Operations<Double> {
         return Math.pow(x, y);
     }
 
+    @Override
+    public Double log(Double x, Double y) throws EvaluatingExceptions {
+        return null;
+    }
+
     private int factorialFinder(Double x) throws NotIntegerFactorialException {
         int ans = 1, cnt = 1;
         if (x == Math.floor(x)) {
             while (cnt <= x) {
-                ans += ++cnt;
+                ans *= cnt++;
             }
             return ans;
         } else {

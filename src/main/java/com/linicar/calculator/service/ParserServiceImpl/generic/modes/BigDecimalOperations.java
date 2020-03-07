@@ -122,7 +122,7 @@ public class BigDecimalOperations implements Operations<BigDecimal> {
         double x = y.doubleValue();//todo: почему даблы?
         if (x == Math.floor(x)) {
             while (cnt <= x) {
-                ans += ++cnt;//todo: а не умнжение ли?
+                ans *= cnt++;
             }
             return ans;
         } else {

@@ -91,6 +91,7 @@ public class ExpressionParser<T> implements Parser<T> {
         functionsMap.put("tan", Token.TAN);
         functionsMap.put("atan", Token.ATAN);
         functionsMap.put("log", Token.LOG);
+        functionsMap.put("factorial", Token.FACT);
     }
 
     private void skipWhiteSpace() {
@@ -112,11 +113,6 @@ public class ExpressionParser<T> implements Parser<T> {
         char ch = expression.charAt(positionInExpression++);
 
         prevToken = curToken;
-
-        if (ch == ',') {
-            curToken = Token.COMMA;
-            return;
-        }
 
         if (tokenMap.containsKey(ch)) {
             curToken = tokenMap.get(ch);
@@ -231,7 +227,7 @@ public class ExpressionParser<T> implements Parser<T> {
                 }
                 return new Negative<>(unaryOperations(true), mode);
             case FACT:
-                return new Factorial<>(unaryOperations(false), mode);
+                return new Factorial<>(unaryOperations(true), mode);
             case ABS:
                 return new Abs<>(unaryOperations(true), mode);
             case SQUARE:
