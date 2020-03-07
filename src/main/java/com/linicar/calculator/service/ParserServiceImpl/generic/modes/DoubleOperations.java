@@ -10,7 +10,7 @@ public class DoubleOperations implements Operations<Double> {
         try {
             return Double.parseDouble(expression);
         } catch (NumberFormatException ex) {
-            throw new IllegalConstException("double", expression);
+            throw new IllegalConstException(expression);
         }
     }
 

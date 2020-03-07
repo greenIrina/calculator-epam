@@ -17,7 +17,7 @@ public class BigDecimalOperations implements Operations<BigDecimal> {
         try {
             return new BigDecimal(expression);
         } catch (NumberFormatException ex) {
-            throw new IllegalConstException("int", expression);
+            throw new IllegalConstException(expression);
         }
     }
 

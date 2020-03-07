@@ -6,6 +6,6 @@ public class ParserException extends Exception {
     }
 
     static String pointError(final String expr) {
-        return expr + '\n' + "*".repeat(expr.length());
+        return expr  + "_".repeat(expr.length());
     }
 }
