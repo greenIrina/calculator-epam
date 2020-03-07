@@ -7,13 +7,13 @@ import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Tr
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractBinaryOperator;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractUnaryOperator;
 
-public class Log<T> extends AbstractBinaryOperator<T> {
+public class Log extends AbstractBinaryOperator {
 
-    public Log(TripleExpression<T> x, TripleExpression<T> y, Operations<T> mode) {
+    public Log(TripleExpression x, TripleExpression y, Operations mode) {
         super(x, y, mode);
     }
 
-    protected T apply(T x, T y) throws EvaluatingExceptions, UnsupportedModeException {
+    protected Double apply(Double x, Double y) throws EvaluatingExceptions, UnsupportedModeException {
         return mode.log(x, y);
     }
 }

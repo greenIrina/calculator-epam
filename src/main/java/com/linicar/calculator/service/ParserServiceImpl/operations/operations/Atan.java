@@ -5,12 +5,12 @@ import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Opera
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractUnaryOperator;
 
-public class Atan<T> extends AbstractUnaryOperator<T> {
-    public Atan(TripleExpression<T> x, Operations<T> mode) {
+public class Atan extends AbstractUnaryOperator {
+    public Atan(TripleExpression x, Operations mode) {
         super(x, mode);
     }
 
-    protected T apply(T x) throws EvaluatingExceptions {
+    protected Double apply(Double x) throws EvaluatingExceptions {
         return mode.atan(x);
     }
 }

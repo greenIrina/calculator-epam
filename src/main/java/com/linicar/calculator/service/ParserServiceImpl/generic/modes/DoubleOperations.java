@@ -4,7 +4,7 @@ import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
 
 
-public class DoubleOperations implements Operations<Double> {
+public class DoubleOperations implements Operations {
     @Override
     public Double parseConst(String expression) throws ParserException {
         try {
@@ -40,7 +40,7 @@ public class DoubleOperations implements Operations<Double> {
     }
 
     @Override
-    public Double getNumber(int x) {
+    public Double getNumber(Double x) {
         return (double) x;
     }
 

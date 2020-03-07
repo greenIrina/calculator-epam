@@ -6,14 +6,14 @@ import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Opera
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractUnaryOperator;
 
-public class Factorial<T> extends AbstractUnaryOperator<T> {
+public class Factorial extends AbstractUnaryOperator {
 
-    public Factorial(TripleExpression<T> operand, Operations<T> mode) {
+    public Factorial(TripleExpression operand, Operations mode) {
         super(operand, mode);
     }
 
     @Override
-    protected T apply(T x) throws EvaluatingExceptions, NotIntegerFactorialException {
+    protected Double apply(Double x) throws EvaluatingExceptions, NotIntegerFactorialException {
         return mode.factorial(x);
     }
 }

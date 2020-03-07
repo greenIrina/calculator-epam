@@ -5,12 +5,12 @@ import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Opera
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractUnaryOperator;
 
-public class Sin<T> extends AbstractUnaryOperator<T> {
-    public Sin(TripleExpression<T> x, Operations<T> mode) {
+public class Sin extends AbstractUnaryOperator {
+    public Sin(TripleExpression x, Operations mode) {
         super(x, mode);
     }
 
-    protected T apply(T x) throws EvaluatingExceptions {
+    protected Double apply(Double x) throws EvaluatingExceptions {
         return mode.sin(x);
     }
 }

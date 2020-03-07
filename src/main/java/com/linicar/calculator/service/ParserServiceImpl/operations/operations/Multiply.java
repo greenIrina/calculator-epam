@@ -5,13 +5,13 @@ import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Opera
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractBinaryOperator;
 
-public class Multiply<T> extends AbstractBinaryOperator<T> {
+public class Multiply extends AbstractBinaryOperator {
 
-    public Multiply(TripleExpression<T> x, TripleExpression<T> y, Operations<T> mode) {
+    public Multiply(TripleExpression x, TripleExpression y, Operations mode) {
         super(x, y, mode);
     }
 
-    protected T apply(T x, T y) throws EvaluatingExceptions {
+    protected Double apply(Double x, Double y) throws EvaluatingExceptions {
         return mode.mult(x, y);
     }
 }

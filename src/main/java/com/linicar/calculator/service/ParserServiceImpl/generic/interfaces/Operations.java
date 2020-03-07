@@ -1,48 +1,46 @@
 package com.linicar.calculator.service.ParserServiceImpl.generic.interfaces;
 
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.NotIntegerFactorialException;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserException;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedModeException;
+import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 
-public interface Operations<T> {
+public interface Operations {
+
     //Simple and Engineering operation
-    T parseConst(String expression) throws ParserException;
+    Double parseConst(String expression) throws ParserException;
 
-    T add(T left, T right) throws EvaluatingExceptions;
+    Double add(Double left, Double right) throws EvaluatingExceptions;
 
-    T sub(T left, T right) throws EvaluatingExceptions;
+    Double sub(Double left, Double right) throws EvaluatingExceptions;
 
-    T divide(T left, T right) throws EvaluatingExceptions;
+    Double divide(Double left, Double right) throws EvaluatingExceptions;
 
-    T mult(T left, T right) throws EvaluatingExceptions;
+    Double mult(Double left, Double right) throws EvaluatingExceptions;
 
-    T negative(T x) throws EvaluatingExceptions;
+    Double negative(Double x) throws EvaluatingExceptions;
 
-    T getNumber(int x);
+    Double getNumber(Double x);
 
-    T abs(T x) throws EvaluatingExceptions;
+    Double abs(Double x) throws EvaluatingExceptions;
 
-    T square(T x) throws EvaluatingExceptions;
+    Double square(Double x) throws EvaluatingExceptions;
 
-    T mod(T left, T right) throws EvaluatingExceptions;
+    Double mod(Double left, Double right) throws EvaluatingExceptions;
 
-    T sqrt(T x) throws EvaluatingExceptions;
+    Double sqrt(Double x) throws EvaluatingExceptions;
 
 
     //Engineering operation
 
-    T factorial(T x) throws EvaluatingExceptions;
+    Double factorial(Double x) throws EvaluatingExceptions;
 
-    T sin(T x) throws EvaluatingExceptions;
+    Double sin(Double x) throws EvaluatingExceptions;
 
-    T cos(T x) throws EvaluatingExceptions;
+    Double cos(Double x) throws EvaluatingExceptions;
 
-    T tan(T x) throws EvaluatingExceptions;
+    Double tan(Double x) throws EvaluatingExceptions;
 
-    T atan(T x) throws EvaluatingExceptions;
+    Double atan(Double x) throws EvaluatingExceptions;
 
-    T pow(T x, T y) throws EvaluatingExceptions;
+    Double pow(Double x, Double y) throws EvaluatingExceptions;
 
-    T log(T x, T y) throws EvaluatingExceptions;
+    Double log(Double x, Double y) throws EvaluatingExceptions;
 }

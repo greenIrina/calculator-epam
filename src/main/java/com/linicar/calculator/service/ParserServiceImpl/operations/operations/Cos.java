@@ -5,12 +5,12 @@ import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Opera
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractUnaryOperator;
 
-public class Cos<T> extends AbstractUnaryOperator<T> {
-    public Cos(TripleExpression<T> x, Operations<T> mode) {
+public class Cos extends AbstractUnaryOperator {
+    public Cos(TripleExpression x, Operations mode) {
         super(x, mode);
     }
 
-    protected T apply(T x) throws EvaluatingExceptions {
+    protected Double apply(Double x) throws EvaluatingExceptions {
         return mode.cos(x);
     }
 }

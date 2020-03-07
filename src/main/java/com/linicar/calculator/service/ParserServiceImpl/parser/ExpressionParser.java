@@ -5,18 +5,17 @@ import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Opera
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.*;
 
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ExpressionParser<T> implements Parser<T> {
+public class ExpressionParser implements Parser {
 
     private int openBraceCounter;
     private String expression;
-    private Operations<T> mode;
+    private Operations mode;
     private int positionInExpression;
 
-    private T value;
+    private Double value;
     private String nameOfVariable;
 
     private Token curToken;
@@ -53,20 +52,20 @@ public class ExpressionParser<T> implements Parser<T> {
         }
     }
 
-    private static Map<String, BigDecimal> constantMap = new HashMap<>();
+    private static Map<String, Double> constantMap = new HashMap<>();
 
     private static Map<Character, Token> tokenMap = new HashMap<>();
 
     private static Map<String, Token> functionsMap = new HashMap<>();
 
-    public ExpressionParser(Operations<T> mode) {
+    public ExpressionParser(Operations mode) {
         this.mode = mode;
     }
 
     //Constants
     static {
-        constantMap.put("e", BigDecimal.valueOf(Math.E));
-        constantMap.put("pi", BigDecimal.valueOf(Math.PI));
+        constantMap.put("e", Math.E);
+        constantMap.put("pi", Math.PI);
     }
 
     //Operators
@@ -139,7 +138,7 @@ public class ExpressionParser<T> implements Parser<T> {
         throw new WrongTokenException(ch, expression);
     }
 
-    private T getConst() throws ParserException {
+    private Double getConst() throws ParserException {
         int left = positionInExpression - 1;
         while (positionInExpression < expression.length() &&
                 (Character.isDigit(expression.charAt(positionInExpression)) ||
@@ -167,7 +166,7 @@ public class ExpressionParser<T> implements Parser<T> {
         }
 
         if (constantMap.containsKey(str)) {
-            value = (T) constantMap.get(str);
+            value = constantMap.get(str);
             curToken = Token.CONST;
             return;
         }
@@ -205,48 +204,48 @@ public class ExpressionParser<T> implements Parser<T> {
         }
     }
 
-    private TripleExpression<T> unaryOperations(boolean newToken) throws ParserException {
+    private TripleExpression unaryOperations(boolean newToken) throws ParserException {
         if (newToken) {
             nextToken();
         }
         switch (curToken) {
             case CONST:
-                T number = value;
+                Double number = value;
                 nextToken();
-                return new Const<>(number);
+                return new Const(number);
             case VARIABLE:
                 String name = nameOfVariable;
                 nextToken();
-                return new Variable<>(name);
+                return new Variable(name);
             case MINUS:
                 if (Character.isDigit(expression.charAt(positionInExpression))) {
                     curToken = Token.CONST;
                     value = getConst();
                     nextToken();
-                    return new Const<>(value);
+                    return new Const(value);
                 }
-                return new Negative<>(unaryOperations(true), mode);
+                return new Negative(unaryOperations(true), mode);
             case FACT:
-                return new Factorial<>(unaryOperations(true), mode);
+                return new Factorial(unaryOperations(true), mode);
             case ABS:
-                return new Abs<>(unaryOperations(true), mode);
+                return new Abs(unaryOperations(true), mode);
             case SQUARE:
-                return new Square<>(unaryOperations(true), mode);
+                return new Square(unaryOperations(true), mode);
             case SQRT:
-                return new Sqrt<>(unaryOperations(true), mode);
+                return new Sqrt(unaryOperations(true), mode);
             case SIN:
-                return new Sin<>(unaryOperations(true), mode);
+                return new Sin(unaryOperations(true), mode);
             case COS:
-                return new Cos<>(unaryOperations(true), mode);
+                return new Cos(unaryOperations(true), mode);
             case TAN:
-                return new Tan<>(unaryOperations(true), mode);
+                return new Tan(unaryOperations(true), mode);
             case ATAN:
-                return new Atan<>(unaryOperations(true), mode);
+                return new Atan(unaryOperations(true), mode);
             case LOG:
-                return new Log<>(unaryOperations(true), unaryOperations(true), mode);
+                return new Log(unaryOperations(true), unaryOperations(true), mode);
             case OPEN_BRACE:
                 openBraceCounter++;
-                TripleExpression<T> e = addSub(true);
+                TripleExpression e = addSub(true);
                 if (curToken == Token.COMMA) {
                     return e;
                 }
@@ -262,22 +261,22 @@ public class ExpressionParser<T> implements Parser<T> {
         }
     }
 
-    private TripleExpression<T> binaryOperations(boolean newToken) throws ParserException {
-        TripleExpression<T> left = unaryOperations(newToken);
+    private TripleExpression binaryOperations(boolean newToken) throws ParserException {
+        TripleExpression left = unaryOperations(newToken);
 
         while (true) {
             switch (curToken) {
                 case POW:
-                    left = new Pow<>(left, unaryOperations(true), mode);
+                    left = new Pow(left, unaryOperations(true), mode);
                     continue;
                 case MUL:
-                    left = new Multiply<>(left, unaryOperations(true), mode);
+                    left = new Multiply(left, unaryOperations(true), mode);
                     continue;
                 case DIV:
-                    left = new Divide<>(left, unaryOperations(true), mode);
+                    left = new Divide(left, unaryOperations(true), mode);
                     continue;
                 case MOD:
-                    left = new Mod<>(left, unaryOperations(true), mode);
+                    left = new Mod(left, unaryOperations(true), mode);
                     continue;
                 default:
                     return left;
@@ -285,16 +284,16 @@ public class ExpressionParser<T> implements Parser<T> {
         }
     }
 
-    private TripleExpression<T> addSub(boolean newToken) throws ParserException {
-        TripleExpression<T> left = binaryOperations(newToken);
+    private TripleExpression addSub(boolean newToken) throws ParserException {
+        TripleExpression left = binaryOperations(newToken);
 
         while (true) {
             switch (curToken) {
                 case PLUS:
-                    left = new Add<>(left, binaryOperations(true), mode);
+                    left = new Add(left, binaryOperations(true), mode);
                     break;
                 case MINUS:
-                    left = new Subtract<>(left, binaryOperations(true), mode);
+                    left = new Subtract(left, binaryOperations(true), mode);
                     break;
                 default:
                     if (curToken != Token.END && curToken != Token.CLOSE_BRACE && curToken != Token.COMMA) {
@@ -305,7 +304,7 @@ public class ExpressionParser<T> implements Parser<T> {
         }
     }
 
-    public TripleExpression<T> parse(String expression) throws ParserException {
+    public TripleExpression parse(String expression) throws ParserException {
 
         this.expression = expression;
         openBraceCounter = 0;
