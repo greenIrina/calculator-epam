@@ -6,15 +6,13 @@ import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedMo
 import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 
-public abstract class AbstractBinaryOperator implements TripleExpression  {
-    private TripleExpression  firstOperand;
-    private TripleExpression  secondOperand;
-    protected Operations  mode;
+public abstract class AbstractBinaryOperator implements TripleExpression {
+    private TripleExpression firstOperand;
+    private TripleExpression secondOperand;
 
-    protected AbstractBinaryOperator(TripleExpression  x, TripleExpression  y, Operations  mode) {
+    protected AbstractBinaryOperator(TripleExpression x, TripleExpression y) {
         firstOperand = x;
         secondOperand = y;
-        this.mode = mode;
     }
 
     protected abstract Double apply(Double x, Double y) throws EvaluatingExceptions, UnsupportedModeException;

@@ -3,16 +3,17 @@ package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedModeException;
 import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
+import com.linicar.calculator.service.ParserServiceImpl.generic.modes.DoubleOperations;
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractBinaryOperator;
 
 public class Log extends AbstractBinaryOperator {
 
-    public Log(TripleExpression x, TripleExpression y, Operations mode) {
-        super(x, y, mode);
+    public Log(TripleExpression x, TripleExpression y) {
+        super(x, y);
     }
 
-    protected Double apply(Double x, Double y) throws EvaluatingExceptions, UnsupportedModeException {
-        return mode.log(x, y);
+    protected Double apply(Double x, Double y) throws EvaluatingExceptions {
+        return new DoubleOperations().log(x, y);
     }
 }

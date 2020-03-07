@@ -8,16 +8,14 @@ import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Tr
 
 public abstract class AbstractUnaryOperator implements TripleExpression {
     protected final TripleExpression operand;
-    protected final Operations mode;
 
-    protected AbstractUnaryOperator(TripleExpression operand, Operations mode) {
+    protected AbstractUnaryOperator(TripleExpression operand) {
         this.operand = operand;
-        this.mode = mode;
     }
 
-    protected abstract Double apply(Double x) throws EvaluatingExceptions, NotIntegerFactorialException;
+    protected abstract Double apply(Double x) throws EvaluatingExceptions;
 
-    public Double evaluate(Double x, Double y, Double z) throws EvaluatingExceptions, UnsupportedModeException, NotIntegerFactorialException {
+    public Double evaluate(Double x, Double y, Double z) throws EvaluatingExceptions, UnsupportedModeException {
         return apply(operand.evaluate(x, y, z));
     }
 
