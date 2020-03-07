@@ -2,7 +2,6 @@ package com.linicar.calculator.controller;
 
 import com.linicar.calculator.service.EngineeringCalcService;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

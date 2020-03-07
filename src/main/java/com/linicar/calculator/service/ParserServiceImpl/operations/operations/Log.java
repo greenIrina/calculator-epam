@@ -5,7 +5,6 @@ import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedMo
 import com.linicar.calculator.service.ParserServiceImpl.generic.interfaces.Operations;
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractBinaryOperator;
-import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractUnaryOperator;
 
 public class Log extends AbstractBinaryOperator {
 
