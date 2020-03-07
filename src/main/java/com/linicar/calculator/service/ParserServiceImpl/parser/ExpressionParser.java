@@ -14,7 +14,7 @@ public class ExpressionParser<T> implements Parser<T> {
     private int openBraceCounter;
     private String expression;
     private Operations<T> mode;
-    private int posInExpression;
+    private int positionInExpression;
 
     private T value;
     private String nameOfVariable;
@@ -34,6 +34,7 @@ public class ExpressionParser<T> implements Parser<T> {
         MINUS("minus"),
         END("end"),
         ERROR("err"),
+        COMMA("comma"),
         VARIABLE("value"),
         CONST("value"),
         SQRT("operator"),
@@ -42,7 +43,8 @@ public class ExpressionParser<T> implements Parser<T> {
         SIN("operator"),
         COS("operator"),
         TAN("operator"),
-        ATAN("operator");
+        ATAN("operator"),
+        LOG("operator");
 
         final String type;
 
@@ -88,12 +90,13 @@ public class ExpressionParser<T> implements Parser<T> {
         functionsMap.put("cos", Token.COS);
         functionsMap.put("tan", Token.TAN);
         functionsMap.put("atan", Token.ATAN);
+        functionsMap.put("log", Token.LOG);
     }
 
     private void skipWhiteSpace() {
-        while (posInExpression < expression.length() &&
-                Character.isWhitespace(expression.charAt(posInExpression))) {
-            posInExpression++;
+        while (positionInExpression < expression.length() &&
+                Character.isWhitespace(expression.charAt(positionInExpression))) {
+            positionInExpression++;
         }
     }
 
@@ -101,20 +104,26 @@ public class ExpressionParser<T> implements Parser<T> {
 
         skipWhiteSpace();
 
-        if (posInExpression >= expression.length()) {
+        if (positionInExpression >= expression.length()) {
             curToken = Token.END;
             return;
         }
 
-        char ch = expression.charAt(posInExpression++);
+        char ch = expression.charAt(positionInExpression++);
 
         prevToken = curToken;
-        if (ch == '!') {
-            curToken = Token.FACT;
+
+        if (ch == ',') {
+            curToken = Token.COMMA;
             return;
         }
+
         if (tokenMap.containsKey(ch)) {
             curToken = tokenMap.get(ch);
+//            while (curToken == Token.CLOSE_BRACE) {
+//                openBraceCounter--;
+//                nextToken();
+//            }
             match();
             return;
         }
@@ -130,26 +139,27 @@ public class ExpressionParser<T> implements Parser<T> {
             return;
         }
 
+
         throw new WrongTokenException(ch, expression);
     }
 
     private T getConst() throws ParserException {
-        int left = posInExpression - 1;
-        while (posInExpression < expression.length() &&
-                (Character.isDigit(expression.charAt(posInExpression)) ||
-                        expression.charAt(posInExpression) == '.')) {
-            posInExpression++;
+        int left = positionInExpression - 1;
+        while (positionInExpression < expression.length() &&
+                (Character.isDigit(expression.charAt(positionInExpression)) ||
+                        expression.charAt(positionInExpression) == '.')) {
+            positionInExpression++;
         }
-        return mode.parseConst(expression.substring(left, posInExpression));
+        return mode.parseConst(expression.substring(left, positionInExpression));
     }
 
     private void getId() throws ParserException {
-        int left = posInExpression - 1;
-        while (posInExpression < expression.length() &&
-                Character.isLetter(expression.charAt(posInExpression))) {
-            posInExpression++;
+        int left = positionInExpression - 1;
+        while (positionInExpression < expression.length() &&
+                Character.isLetter(expression.charAt(positionInExpression))) {
+            positionInExpression++;
         }
-        String str = expression.substring(left, posInExpression);
+        String str = expression.substring(left, positionInExpression);
 
         switch (str) {
             case "x":
@@ -177,24 +187,24 @@ public class ExpressionParser<T> implements Parser<T> {
     private void match() throws ParserException {
         if (curToken.type.equals("operator")) {
             if (prevToken == Token.OPEN_BRACE || prevToken == Token.ERROR) {
-                throw new MissedArgumentException("first", expression, posInExpression - 1);
+                throw new MissedArgumentException("first", expression, positionInExpression - 1);
             }
             if (prevToken.type.equals("operator")) {
-                throw new MissedArgumentException("middle", expression, posInExpression - 1);
+                throw new MissedArgumentException("middle", expression, positionInExpression - 1);
             }
         }
 
         if (curToken == Token.OPEN_BRACE
                 && (prevToken == Token.CLOSE_BRACE || prevToken.type.equals("value"))) {
-            throw new MissedOperatorException(expression, posInExpression - 1);
+            throw new MissedOperatorException(expression, positionInExpression - 1);
         }
 
         if (curToken == Token.CLOSE_BRACE) {
             if (openBraceCounter == 0) {
-                throw new WrongBraceException("closing", expression, posInExpression - 1);
+                throw new WrongBraceException("closing", expression, positionInExpression - 1);
             }
             if (prevToken.type.equals("operator") || prevToken.type.equals("minus")) {
-                throw new MissedArgumentException("last", expression, posInExpression - 1);
+                throw new MissedArgumentException("last", expression, positionInExpression - 1);
             }
         }
     }
@@ -213,7 +223,7 @@ public class ExpressionParser<T> implements Parser<T> {
                 nextToken();
                 return new Variable<>(name);
             case MINUS:
-                if (Character.isDigit(expression.charAt(posInExpression))) {
+                if (Character.isDigit(expression.charAt(positionInExpression))) {
                     curToken = Token.CONST;
                     value = getConst();
                     nextToken();
@@ -221,7 +231,7 @@ public class ExpressionParser<T> implements Parser<T> {
                 }
                 return new Negative<>(unaryOperations(true), mode);
             case FACT:
-                return new Factorial<>(unaryOperations(true), mode);
+                return new Factorial<>(unaryOperations(false), mode);
             case ABS:
                 return new Abs<>(unaryOperations(true), mode);
             case SQUARE:
@@ -236,18 +246,23 @@ public class ExpressionParser<T> implements Parser<T> {
                 return new Tan<>(unaryOperations(true), mode);
             case ATAN:
                 return new Atan<>(unaryOperations(true), mode);
+            case LOG:
+                return new Log<>(unaryOperations(true), unaryOperations(true), mode);
             case OPEN_BRACE:
                 openBraceCounter++;
                 TripleExpression<T> e = addSub(true);
+                if (curToken == Token.COMMA) {
+                    return e;
+                }
                 if (curToken == Token.CLOSE_BRACE) {
                     openBraceCounter--;
                     nextToken();
                 } else {
-                    throw new WrongBraceException("opening", expression, posInExpression - 1);
+                    throw new WrongBraceException("opening", expression, positionInExpression - 1);
                 }
                 return e;
             default:
-                throw new MissedArgumentException("last", expression, posInExpression - 1);
+                throw new MissedArgumentException("last", expression, positionInExpression - 1);
         }
     }
 
@@ -278,15 +293,18 @@ public class ExpressionParser<T> implements Parser<T> {
         TripleExpression<T> left = binaryOperations(newToken);
 
         while (true) {
-            if (curToken == Token.PLUS) {
-                left = new Add<>(left, binaryOperations(true), mode);
-            } else if (curToken == Token.MINUS) {
-                left = new Subtract<>(left, binaryOperations(true), mode);
-            } else {
-                if (curToken != Token.END && curToken != Token.CLOSE_BRACE && curToken != Token.CONST || (curToken == Token.CONST && prevToken == Token.CONST)) {
-                    throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
-                }
-                return left;
+            switch (curToken) {
+                case PLUS:
+                    left = new Add<>(left, binaryOperations(true), mode);
+                    break;
+                case MINUS:
+                    left = new Subtract<>(left, binaryOperations(true), mode);
+                    break;
+                default:
+                    if (curToken != Token.END && curToken != Token.CLOSE_BRACE && curToken != Token.COMMA) {
+                        throw new WrongTokenException(curToken.toString().toLowerCase(), expression);
+                    }
+                    return left;
             }
         }
     }
@@ -295,7 +313,7 @@ public class ExpressionParser<T> implements Parser<T> {
 
         this.expression = expression;
         openBraceCounter = 0;
-        posInExpression = 0;
+        positionInExpression = 0;
         curToken = Token.ERROR;
         nextToken();
 

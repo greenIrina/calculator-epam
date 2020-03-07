@@ -107,12 +107,22 @@ public class BigDecimalOperations implements Operations<BigDecimal> {
         return BigDecimal.valueOf(Math.atan(x.doubleValue()));
     }
 
+    @Override
+    public BigDecimal log(BigDecimal b, BigDecimal a) throws DivisionByZeroException {
+        try {
+            return BigDecimal.valueOf(Math.log(b.doubleValue()))
+                    .divide(BigDecimal.valueOf(Math.log(a.doubleValue())), mc);
+        } catch (ArithmeticException ex) {
+            throw new DivisionByZeroException();
+        }
+    }
+
     private int factorialFinder(BigDecimal y) throws NotIntegerFactorialException {
         int ans = 1, cnt = 1;
-        double x = y.doubleValue();
+        double x = y.doubleValue();//todo: почему даблы?
         if (x == Math.floor(x)) {
             while (cnt <= x) {
-                ans += ++cnt;
+                ans += ++cnt;//todo: а не умнжение ли?
             }
             return ans;
         } else {
