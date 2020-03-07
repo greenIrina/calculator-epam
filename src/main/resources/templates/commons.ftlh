@@ -12,11 +12,11 @@
         <script>
             //function that display value
             function dis(val) {
-                document.getElementById("expression").value += val
+                document.getElementById("expression").value += val;
             }
 
-            function clear() {
-                document.getElementById("expresion").value = ''
+            function clr() {
+                document.getElementById("expresion").value ="";
             }
         </script>
     </head>

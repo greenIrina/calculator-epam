@@ -13,8 +13,7 @@
                     <tr>
                         <td colspan="3"><input autofocus type="text" id="expression" name="expressionEng"
                                                value="${expressionEng!}"/></td>
-                        <td><input type="submit" value="="></td>
-                        <#--                        <td><button name="button" value="c" onclick="clear()"/> </td>-->
+                        <td><input type="submit" style="margin-bottom: 1rem" value="="></td>
                     </tr>
                     <tr>
                         <td><button name="button" value="(" onclick="dis('(')">(</button></td>
@@ -35,28 +34,38 @@
                         <td></td>
                     </tr>
                     <tr>
-                        <td class="digit"><button name="digit" value="1" onclick="dis('1')">1</button></td>
-                        <td class="digit"><button name="digit" value="2" onclick="dis('2')">2</button></td>
-                        <td class="digit"><button name="digit" value="3" onclick="dis('3')">3</button></td>
-                        <td><button name="button" value="/" onclick="dis('/')">/</button></td>
+                        <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="1"
+                                                 onclick="dis('1')"/></td>
+                        <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="2"
+                                                 onclick="dis('2')"/></td>
+                        <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="3"
+                                                 onclick="dis('3')"/></td>
+                        <td><input type="button" value="+" onclick="dis('+')"/></td>
                     </tr>
                     <tr>
-                        <td class="digit"><button name="digit" value="4" onclick="dis('4')">4</button></td>
-                        <td class="digit"><button name="digit" value="5" onclick="dis('5')">5</button></td>
-                        <td class="digit"><button name="digit" value="6" onclick="dis('6')">6</button></td>
-                        <td><button name="button" value="-" onclick="dis('-')">-</button></td>
+                        <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="4"
+                                                 onclick="dis('4')"/></td>
+                        <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="5"
+                                                 onclick="dis('5')"/></td>
+                        <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="6"
+                                                 onclick="dis('6')"/></td>
+                        <td><input type="button" value="-" onclick="dis('-')"/></td>
                     </tr>
                     <tr>
-                        <td class="digit"><button name="digit" value="7" onclick="dis('7')">7</button></td>
-                        <td class="digit"><button name="digit" value="8" onclick="dis('8')">8</button></td>
-                        <td class="digit"><button name="digit" value="9" onclick="dis('9')">9</button></td>
-                        <td><button name="button" value="+" onclick="dis('+')">+</button></td>
+                        <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="7"
+                                                 onclick="dis('7')"/></td>
+                        <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="8"
+                                                 onclick="dis('8')"/></td>
+                        <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="9"
+                                                 onclick="dis('9')"/></td>
+                        <td><input type="button" value="*" onclick="dis('*')"/></td>
                     </tr>
                     <tr>
-                        <td><button name="button" value="." onclick="dis('.')">.</button></td>
-                        <td class="digit"><button name="digit" value="0" onclick="dis('0')">0</button></td>
+                        <td><input type="button" value="." onclick="dis('.')"/></td>
+                        <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="0"
+                                                 onclick="dis('0')"/></td>
                         <td></td>
-                        <td><button name="button" value="*" onclick="dis('*')">*</button></td>
+                        <td><input type="button" value="/" onclick="dis('/')"/></td>
                     </tr>
                 </table>
                 <div class="message">
