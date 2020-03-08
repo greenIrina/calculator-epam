@@ -53,7 +53,7 @@
                         <td>
                             <button name="button" value="factorial()" onclick="dis('factorial(')">factorial()</button>
                         </td>
-                        <td></td>
+                        <td><button name="button" value="log" onclick="dis('//')">log<sub>x</sub>y</button></td>
                     </tr>
                     <tr>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="1"
@@ -71,7 +71,7 @@
                                                  onclick="dis('5')"/></td>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="6"
                                                  onclick="dis('6')"/></td>
-                        <td><input type="button" value="-" onclick="dis('-')"/></td>
+                        <td><button name="button" value="-" onclick="dis('-')">-</button></td>
                     </tr>
                     <tr>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="7"
@@ -80,14 +80,14 @@
                                                  onclick="dis('8')"/></td>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="9"
                                                  onclick="dis('9')"/></td>
-                        <td><input type="button" value="*" onclick="dis('*')"/></td>
+                        <td><button name="button" value="*" onclick="dis('*')">*</button></td>
                     </tr>
                     <tr>
-                        <td><input type="button" value="." onclick="dis('.')"/></td>
+                        <td><button name="button" value="." onclick="dis('.')">.</button></td>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="0"
                                                  onclick="dis('0')"/></td>
                         <td></td>
-                        <td><input type="button" value="/" onclick="dis('/')"/></td>
+                        <td><button name="button" value="/" onclick="dis('/')">/</button></td>
                     </tr>
                 </table>
                 <div class="message">
