@@ -28,5 +28,40 @@
         </table>
     </div>
 
+    Syntax of operations and functions:
+    <div class="datatable" style="width: 40%">
+        <table>
+            <thead class="caption">
+            <tr>
+                <td>Function</td>
+                <td>Syntax</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>log<sub>x</sub>y</td>
+                <td>x // y</td>
+            </tr>
+            <tr>
+                <td>x<sup>y</sup></td>
+                <td>x^y</td>
+            </tr>
+            <tr>
+                <td>x<sup>2</sup></td>
+                <td>x^2</td>
+            </tr>
+            <tr>
+                <td>&radic;x</td>
+                <td>sqrt(x)</td>
+            </tr>
+            <tr>
+                <td>x!</td>
+                <td>factorial(x)</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <b>CAUTION:</b> power function is Left Distributive!!! 2<sup>2<sup>3</sup></sup> = 64 .
+
 
 </@c.page>
