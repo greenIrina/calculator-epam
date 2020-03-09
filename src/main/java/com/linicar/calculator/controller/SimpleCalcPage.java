@@ -1,7 +1,5 @@
 package com.linicar.calculator.controller;
 
-
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
 import com.linicar.calculator.service.SimpleCalcService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
