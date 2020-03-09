@@ -33,5 +33,4 @@ public class Page {
             putMessage(httpSession, "Error: " + e.getMessage());
         }
     }
-
 }
