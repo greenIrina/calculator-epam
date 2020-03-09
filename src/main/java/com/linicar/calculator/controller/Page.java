@@ -23,9 +23,9 @@ public class Page {
 
     void calculation(String expr, HttpSession httpSession, ParserRepository parserRepository) {
         try {
-            String ans = parserRepository.evaluate(expr).toString();
-            if (ans.length() >= 2 && ans.substring(ans.length() - 2).equals(".0")) {
-                putMessage(httpSession, "Result: " + ans.substring(0, ans.length() - 2));
+            Double ans = parserRepository.evaluate(expr);
+            if (ans - ans.intValue() == 0) {
+                putMessage(httpSession, "Result: " + ans.intValue());
             } else {
                 putMessage(httpSession, "Result: " + ans);
             }
