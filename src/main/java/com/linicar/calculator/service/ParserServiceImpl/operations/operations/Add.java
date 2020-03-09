@@ -1,11 +1,11 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
 
-import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Expression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractBinaryOperator;
 
 public class Add extends AbstractBinaryOperator {
 
-    public Add(TripleExpression x, TripleExpression y) {
+    public Add(Expression x, Expression y) {
         super(x, y);
     }
 

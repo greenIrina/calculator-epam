@@ -4,7 +4,6 @@ import com.linicar.calculator.service.ParserServiceImpl.exceptions.IllegalArgume
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.*;
 import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Operations;
 
-
 public class DoubleOperations implements Operations {
     @Override
     public Double parseConst(String expression) throws ParserException {
@@ -38,11 +37,6 @@ public class DoubleOperations implements Operations {
     @Override
     public Double negative(Double x) {
         return -x;
-    }
-
-    @Override
-    public Double getNumber(Double x) {
-        return x;
     }
 
     @Override

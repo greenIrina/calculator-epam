@@ -1,8 +1,8 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
 
-import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Expression;
 
-public class Const implements TripleExpression {
+public class Const implements Expression {
 
     private final Double number;
 
@@ -10,7 +10,7 @@ public class Const implements TripleExpression {
         this.number = number;
     }
 
-    public Double evaluate(Double x, Double y, Double z) {
+    public Double evaluate() {
         return number;
     }
 }

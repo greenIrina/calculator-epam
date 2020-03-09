@@ -4,6 +4,6 @@ import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExc
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.NotIntegerFactorialException;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedModeException;
 
-public interface TripleExpression {
-    Double evaluate(Double x, Double y, Double z) throws EvaluatingExceptions, UnsupportedModeException, NotIntegerFactorialException;
+public interface Expression {
+    Double evaluate() throws EvaluatingExceptions, UnsupportedModeException;
 }

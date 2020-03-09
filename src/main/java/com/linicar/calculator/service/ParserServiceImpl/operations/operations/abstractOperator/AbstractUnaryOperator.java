@@ -2,19 +2,19 @@ package com.linicar.calculator.service.ParserServiceImpl.operations.operations.a
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedModeException;
-import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Expression;
 
-public abstract class AbstractUnaryOperator implements TripleExpression {
-    protected final TripleExpression operand;
+public abstract class AbstractUnaryOperator implements Expression {
+    protected final Expression operand;
 
-    protected AbstractUnaryOperator(TripleExpression operand) {
+    protected AbstractUnaryOperator(Expression operand) {
         this.operand = operand;
     }
 
     protected abstract Double apply(Double x) throws EvaluatingExceptions;
 
-    public Double evaluate(Double x, Double y, Double z) throws EvaluatingExceptions, UnsupportedModeException {
-        return apply(operand.evaluate(x, y, z));
+    public Double evaluate() throws EvaluatingExceptions, UnsupportedModeException {
+        return apply(operand.evaluate());
     }
 
 }

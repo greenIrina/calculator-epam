@@ -1,4 +1,4 @@
-<#-- @ftlvariable name="message" type="java.lang.String" -->
+<#-- @ftlvariable name="result" type="java.lang.String" -->
 <#-- @ftlvariable name="expression" type="java.lang.String" -->
 
 <#import "/spring.ftl" as spring>
@@ -61,8 +61,8 @@
                 <#--                    <input type="submit" value="Enter">-->
                 <#--                </div>-->
                 <div class="message">
-                    <#if message??>
-                        ${message}
+                    <#if result??>
+                        ${result}
                     </#if>
                 </div>
             </form>

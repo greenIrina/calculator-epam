@@ -1,10 +1,10 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
 
-import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Expression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractUnaryOperator;
 
 public class Sin extends AbstractUnaryOperator {
-    public Sin(TripleExpression x) {
+    public Sin(Expression x) {
         super(x);
     }
 

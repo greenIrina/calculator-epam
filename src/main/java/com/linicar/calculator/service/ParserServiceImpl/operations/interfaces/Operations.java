@@ -5,7 +5,6 @@ import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserExcepti
 
 public interface Operations {
 
-    //Simple and Engineering operation
     Double parseConst(String expression) throws ParserException;
 
     Double add(Double left, Double right);
@@ -18,8 +17,6 @@ public interface Operations {
 
     Double negative(Double x);
 
-    Double getNumber(Double x);
-
     Double abs(Double x);
 
     Double square(Double x);
@@ -27,9 +24,6 @@ public interface Operations {
     Double mod(Double left, Double right);
 
     Double sqrt(Double x) throws EvaluatingExceptions;
-
-
-    //Engineering operation
 
     Double factorial(Double x) throws EvaluatingExceptions;
 

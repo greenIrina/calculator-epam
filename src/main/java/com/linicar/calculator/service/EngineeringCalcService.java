@@ -4,7 +4,7 @@ import com.linicar.calculator.repository.ParserRepository;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserException;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.DoubleOperations;
-import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Expression;
 import com.linicar.calculator.service.ParserServiceImpl.parser.ExpressionParser;
 import org.springframework.stereotype.Service;
 
@@ -19,17 +19,9 @@ public class EngineeringCalcService implements ParserRepository {
     }
 
     @Override
-    public Double evaluate(String expression) throws ParserException, EvaluatingExceptions {
-        Double[] arguments = {0.0, 0.0, 0.0};
-        expression = expression.toLowerCase();
-        expression = expression.trim();
-
-        return evaluate(expression, arguments[0], arguments[1], arguments[2]);
-    }
-
-    private Double evaluate(String expression, Double x, Double y, Double z) throws ParserException, EvaluatingExceptions {
-        TripleExpression tripleExpression = parser.parse(expression);
-        return tripleExpression.evaluate(x, y, z);
+    public Double evaluate(String expr) throws ParserException, EvaluatingExceptions {
+        Expression expression = parser.parse(expr);
+        return expression.evaluate();
     }
 
 }

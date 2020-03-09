@@ -1,11 +1,11 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
 
-import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Expression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractUnaryOperator;
 
 public class Negative extends AbstractUnaryOperator {
 
-    public Negative(TripleExpression x) {
+    public Negative(Expression x) {
         super(x);
     }
 

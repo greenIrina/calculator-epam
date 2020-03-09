@@ -2,10 +2,6 @@ package com.linicar.calculator.service.ParserServiceImpl.exceptions;
 
 public class WrongTokenException extends ParserException {
 
-    public WrongTokenException() {
-        super("Illegal token");
-    }
-
     public WrongTokenException(char ch, String expr) {
         super("Illegal token " + ch + " in expression " + expr);
     }

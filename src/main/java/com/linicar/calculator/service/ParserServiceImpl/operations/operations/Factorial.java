@@ -1,12 +1,12 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
 
 import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
-import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Expression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractUnaryOperator;
 
 public class Factorial extends AbstractUnaryOperator {
 
-    public Factorial(TripleExpression operand) {
+    public Factorial(Expression operand) {
         super(operand);
     }
 

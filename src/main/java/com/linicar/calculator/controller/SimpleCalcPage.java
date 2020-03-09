@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-//получает строку-кидает её в парсер
-//получает сроку от парсера-кидает её в ответ
 @Controller
 public class SimpleCalcPage extends Page {
     private static SimpleCalcService simpleCalcService;
@@ -29,8 +27,7 @@ public class SimpleCalcPage extends Page {
     }
 
     @PostMapping("base")
-    public String calc(@Valid @ModelAttribute("expression") String expression, HttpSession httpSession)
-            throws EvaluatingExceptions {
+    public String calc(@Valid @ModelAttribute("expression") String expression, HttpSession httpSession) {
         calculation(expression, httpSession, simpleCalcService);
         return "simpleCalc";
     }

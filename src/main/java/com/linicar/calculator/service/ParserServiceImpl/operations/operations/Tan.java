@@ -1,11 +1,11 @@
 package com.linicar.calculator.service.ParserServiceImpl.operations.operations;
 
-import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.TripleExpression;
+import com.linicar.calculator.service.ParserServiceImpl.operations.interfaces.Expression;
 import com.linicar.calculator.service.ParserServiceImpl.operations.operations.abstractOperator.AbstractUnaryOperator;
 
 public class Tan extends AbstractUnaryOperator {
 
-    public Tan(TripleExpression x) {
+    public Tan(Expression x) {
         super(x);
     }
 
