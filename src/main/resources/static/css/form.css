@@ -1,8 +1,9 @@
 /* form-box */
 .form-box {
     width: 25rem;
-    margin: 0 auto;
-    background-image: linear-gradient(#b9efb9, #6a68de);
+    margin-top: 2rem ;
+    margin-left: 100px;
+    background-image: linear-gradient(#caefbb, #49de78);
     border: #003300;
     padding: 1rem;
 }
