@@ -39,6 +39,7 @@ header {
     background: #cbf0cf;
     font-family: sans-serif;
     width: max-content;
+    margin: 0 auto;
 }
 
 header nav {
