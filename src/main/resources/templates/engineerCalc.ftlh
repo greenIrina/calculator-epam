@@ -5,7 +5,7 @@
 <#import "commons.ftlh" as c>
 <@c.page>
     <div class="calculator form-box">
-        <div class="header">Enter expression</div>
+        <div class="header">ADVANCED CALCULATOR</div>
         <div class="body">
             <form method="post" action="">
                 <input type="hidden" name="action" value="calcEng"/>
@@ -62,7 +62,7 @@
                         <td><input type="button" value="*" onclick="dis('*')"/></td>
                     </tr>
                     <tr>
-                        <td><button name="button" value="." onclick="dis('.')">.</button></td>
+                        <td><input type="button" value="." onclick="dis('.')"/></td>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="0"
                                                  onclick="dis('0')"/></td>
                         <td></td>

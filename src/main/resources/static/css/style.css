@@ -59,7 +59,7 @@ header nav ul li {
 header nav ul li a {
     text-decoration: none;
     color: var(--black-color);
-    font-family: "Arial Narrow", sans-serif;
+    font-family: monospace;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -121,9 +121,6 @@ aside section .footer a {
     font-size: 0.75rem;
 }
 
-aside section .footer a:after {
-    content: " →";
-}
 
 .message {
     margin: 1rem 0;

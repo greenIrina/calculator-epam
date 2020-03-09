@@ -14,7 +14,7 @@
     font-weight: bold;
     text-align: center;
     padding: 0.2rem;
-    font-family: "Gill Sans MT Condensed", sans-serif;
+    font-family: monospace;
     font-size: xx-large;
 }
 
@@ -22,11 +22,22 @@
     margin: 1rem;
 }
 
-.calculator table input, button {
+.calculator table input {
     border: solid black 2px;
     width: 6rem;
     height: 3rem;
     font-size: large;
+}
+
+.calculator input[type="button"]:hover {
+    background-color: #003300;
+    color: white;
+}
+
+.calculator input[type="button"]:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(2px);
 }
 
 
@@ -52,25 +63,5 @@
 .calculator table {
     margin: 1rem auto;
     border: none;
-    /*width: 32rem;*/
 }
 
-.calculator button {
-    background-color: #2a9d5f;
-    color: lightgreen;
-}
-
-.calculator button:hover {
-    background-color: #003300;
-    color: white;
-}
-.calculator input[type="button"]:hover {
-    background-color: #003300;
-    color: white;
-}
-
-.calculator button:active {
-    background-color: #3e8e41;
-    box-shadow: 0 5px #666;
-    transform: translateY(2px);
-}
