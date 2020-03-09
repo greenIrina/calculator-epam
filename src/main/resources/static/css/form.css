@@ -38,20 +38,20 @@
 }
 
 .calculator input[type="button"]:active {
-    background-color: #3e8e41;
+    background-color: #8e7f4e;
     box-shadow: 0 5px #666;
     transform: translateY(2px);
 }
 
 
 .calculator table input[type="button"] {
-    background-color: #2a9d5f;
-    color: lightgreen;
+    background-color: #379d8e;
+    color: #a9cdf7;
 }
 
 .calculator table input[type="submit"] {
-    background-color: limegreen;
-    color: darkslategrey;
+    background-color: #5946cd;
+    color: #1a3130;
 
 }
 

@@ -4,7 +4,7 @@
     --black-color: #333;
     --caption-color: #3B5998;
     --error-color: red;
-    --datatable-color: #adbfac;
+    --datatable-color: #909cbf;
     --datatable-dark-cell-color: #f8f8f8;
     --message-border-color: #1E88E5;
     --message-background-color: #E3F2FD;
@@ -37,8 +37,9 @@ html {
 
 header {
     position: relative;
-    background: #cbf0cf;
+    background: rgba(157, 177, 214, 0.85);
     font-family: sans-serif;
+    font-weight: bold;
     width: max-content;
     margin: 0 auto;
 }
@@ -134,12 +135,14 @@ aside section .footer a {
 
 .manual {
     padding: 0.5rem;
-    background-image: url("image/skyrim2.jpg");
-    background-size: 80%;
-    background-repeat: no-repeat;
+    /*background-image: url("image/skyrim2.jpg");*/
+    background: rgba(111, 147, 191, 0.79);
+    /*background-size: 80%;*/
+    width: 60rem;
+    color: #f3f4f4;
 }
 
 .manual .textik {
-    background: #d3e9d2;
-    width: 50rem;
+    /*background: #d3e9d2;*/
+    /*width: 50rem;*/
 }
