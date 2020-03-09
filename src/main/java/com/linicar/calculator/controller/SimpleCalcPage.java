@@ -27,6 +27,6 @@ public class SimpleCalcPage extends Page {
     @PostMapping("base")
     public String calc(@Valid @ModelAttribute("expression") String expression, HttpSession httpSession) {
         calculation(expression, httpSession, simpleCalcService);
-        return "simpleCalc";
+        return "redirect:/base";
     }
 }
