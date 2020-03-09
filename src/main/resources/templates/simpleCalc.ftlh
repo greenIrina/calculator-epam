@@ -47,7 +47,7 @@
                                                  onclick="dis('8')"/></td>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="9"
                                                  onclick="dis('9')"/></td>
-                        <td rowspan="2"><input type="submit" style="height: 4rem" value="="></td>
+                        <td rowspan="2"><input type="submit" style="height: 6rem" value="="></td>
                     </tr>
                     <tr>
                         <td><input type="button" value="." onclick="dis('.')"/></td>

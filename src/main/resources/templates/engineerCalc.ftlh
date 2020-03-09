@@ -16,44 +16,23 @@
                         <td><input type="submit" style="margin-bottom: 1rem" value="="></td>
                     </tr>
                     <tr>
-                        <td>
-                            <button name="button" value="(" onclick="dis('(')">(</button>
-                        </td>
-                        <td>
-                            <button name="button" value=")" onclick="dis(')')">)</button>
-                        </td>
-                        <td>
-                            <button name="button" value="sin()" onclick="dis(' sin(')">sin()</button>
-                        </td>
-                        <td>
-                            <button name="button" value="cos()" onclick="dis(' cos(')">cos()</button>
-                        </td>
+                        <td><input type="button" value="(" onclick="dis('(')"/></td>
+                        <td><input type="button" value=")" onclick="dis(')')"/></td>
+                        <td><input type="button" value="sin(" onclick="dis(' sin(')"/></td>
+                        <td><input type="button" value="cos(" onclick="dis(' cos(')"/></td>
+
                     </tr>
                     <tr>
-                        <td>
-                            <button name="button" value="sqrt()" onclick="dis(' sqrt(')">sqrt()</button>
-                        </td>
-                        <td>
-                            <button name="button" value="x^2" onclick="dis('^2 ')">x<sup>2</sup></button>
-                        </td>
-                        <td>
-                            <button name="button" value="tan()" onclick="dis(' tan(')">tan()</button>
-                        </td>
-                        <td>
-                            <button name="button" value="atan()" onclick="dis(' atan(')">atan()</button>
-                        </td>
+                        <td><input type="button" value="sqrt(" onclick="dis(' sqrt(')"/></td>
+                        <td><input type="button" value="x^2" onclick="dis('^2')"/></td>
+                        <td><input type="button" value="tan(" onclick="dis(' tan(')"/></td>
+                        <td><input type="button" value="atan(" onclick="dis(' atan(')"/></td>
                     </tr>
                     <tr>
-                        <td>
-                            <button name="button" value="abs()" onclick="dis(' abs(')">abs()</button>
-                        </td>
-                        <td>
-                            <button name="button" value="x^y" onclick="dis('^')">x<sup>y</sup></button>
-                        </td>
-                        <td>
-                            <button name="button" value="factorial()" onclick="dis('factorial(')">factorial()</button>
-                        </td>
-                        <td><button name="button" value="log" onclick="dis('//')">log<sub>x</sub>y</button></td>
+                        <td><input type="button" value="abs(" onclick="dis(' abs(')"/></td>
+                        <td><input type="button" value="x^y" onclick="dis('^')"/></td>
+                        <td><input type="button" value="factorial(" onclick="dis(' factorial(')"/></td>
+                        <td><input type="button" value="log_x (y)" onclick="dis(' //')"/></td>
                     </tr>
                     <tr>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="1"
@@ -71,7 +50,7 @@
                                                  onclick="dis('5')"/></td>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="6"
                                                  onclick="dis('6')"/></td>
-                        <td><button name="button" value="-" onclick="dis('-')">-</button></td>
+                        <td><input type="button" value="-" onclick="dis('-')"/></td>
                     </tr>
                     <tr>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="7"
@@ -80,14 +59,14 @@
                                                  onclick="dis('8')"/></td>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="9"
                                                  onclick="dis('9')"/></td>
-                        <td><button name="button" value="*" onclick="dis('*')">*</button></td>
+                        <td><input type="button" value="*" onclick="dis('*')"/></td>
                     </tr>
                     <tr>
                         <td><button name="button" value="." onclick="dis('.')">.</button></td>
                         <td class="digit"><input type="button" style="color: green; background: #E1E1E1" value="0"
                                                  onclick="dis('0')"/></td>
                         <td></td>
-                        <td><button name="button" value="/" onclick="dis('/')">/</button></td>
+                        <td><input type="button" value="/" onclick="dis('/')"/></td>
                     </tr>
                 </table>
                 <div class="message">
