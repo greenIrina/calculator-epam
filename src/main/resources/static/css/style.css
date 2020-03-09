@@ -131,3 +131,15 @@ aside section .footer a {
     background-color: var(--message-background-color);
     text-align: center;
 }
+
+.manual {
+    padding: 0.5rem;
+    background-image: url("image/skyrim2.jpg");
+    background-size: 80%;
+    background-repeat: no-repeat;
+}
+
+.manual .textik {
+    background: #d3e9d2;
+    width: 50rem;
+}
