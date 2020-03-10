@@ -1,0 +1,91 @@
+:root {
+    --border-color: rgb(185, 185, 185);
+    --border-radius: 6px;
+    --black-color: #333;
+    --caption-color: #3B5998;
+    --error-color: red;
+    --datatable-color: #909cbf;
+    --datatable-dark-cell-color: #f8f8f8;
+    --message-border-color: #1E88E5;
+    --message-background-color: #E3F2FD;
+    color: var(--black-color);
+    font-family: Verdana, sans-serif;
+    font-size: 16px;
+    background-image: url("image/skyrim.jpg");
+
+}
+
+html {
+    padding: 1rem;
+    min-width: 600px;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+    :root {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 800px) {
+    :root {
+        font-size: 12px;
+    }
+}
+
+header {
+    position: relative;
+    background: rgba(157, 177, 214, 0.85);
+    font-family: sans-serif;
+    font-weight: bold;
+    width: max-content;
+    margin: 0 auto;
+}
+
+header nav {
+    border: 1px solid var(--border-color);
+    padding: 0.75rem 0.75rem;
+    margin: 1rem auto;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 1rem;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: var(--black-color);
+    text-transform: uppercase;
+}
+
+.middle {
+    margin-top: 1rem;
+    overflow: auto;
+}
+
+main {
+    margin-right: 21rem;
+}
+
+.message {
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--message-border-color);
+    background-color: var(--message-background-color);
+    text-align: center;
+}
+
+.manual {
+    padding: 0.5rem;
+    background: rgba(111, 147, 191, 0.79);
+    width: 60rem;
+    color: #f3f4f4;
+}

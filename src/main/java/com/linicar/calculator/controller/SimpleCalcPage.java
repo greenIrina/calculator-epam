@@ -1,28 +1,32 @@
 package com.linicar.calculator.controller;
 
-
-import com.linicar.calculator.service.ParserService;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.EvaluatingExceptions;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.ParserException;
-import com.linicar.calculator.service.ParserServiceImpl.exceptions.UnsupportedModeException;
+import com.linicar.calculator.service.SimpleCalcService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
-//получает строку-кидает её в парсер
-//получает сроку от парсера-кидает её в ответ
 public class SimpleCalcPage extends Page {
-    private static ParserService parserService;
+    private static SimpleCalcService simpleCalcService;
 
-    public SimpleCalcPage() throws UnsupportedModeException {//этого здесь быть не должно(я про исключение)
-        String mode = "d";//считаем в даблах
-        parserService = new ParserService(mode);
+    public SimpleCalcPage() {
+        simpleCalcService = new SimpleCalcService();
     }
 
-    @RequestMapping(value = "/commons", method = RequestMethod.GET)
-    public String greetingForm(String expression) throws EvaluatingExceptions, ParserException {
-        return "commons";
+    @GetMapping("base")
+    public String calc(String expression, Model model) {
+        model.addAttribute("expression", expression);
+        return "simpleCalc";
     }
 
+    @PostMapping("base")
+    public String calc(@Valid @ModelAttribute("expression") String expression, HttpSession httpSession, Model model) {
+        calculation(expression, httpSession, simpleCalcService);
+        return "redirect:/base";
+    }
 }

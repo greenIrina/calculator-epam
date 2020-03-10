@@ -1,0 +1,28 @@
+/* datatable */
+.datatable table {
+    width: 60%;
+    text-align: center;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    font-family: monospace;
+    color: #404041;
+    font-size: large;
+}
+
+.datatable .caption {
+    background-color: var(--datatable-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 0.25rem 0.5rem;
+    font-weight: bold;
+}
+
+.datatable td, .datatable th {
+    border: 1px solid #0f2a15;
+    padding: 0.5em;
+}
+
+.datatable tbody {
+    background-color: #e3f0de;
+}
+
