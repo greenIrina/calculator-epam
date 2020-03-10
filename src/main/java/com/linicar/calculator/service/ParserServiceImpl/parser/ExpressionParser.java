@@ -25,7 +25,6 @@ public class ExpressionParser implements Parser {
         MUL("operator"),
         DIV("operator"),
         ABS("operator"),
-        SQUARE("operator"),
         MOD("operator"),
         OPEN_BRACE("brace"),
         CLOSE_BRACE("brace"),
@@ -82,7 +81,6 @@ public class ExpressionParser implements Parser {
         functionsMap.put("abs", Token.ABS);
         functionsMap.put("sqrt", Token.SQRT);
         functionsMap.put("pow", Token.POW);
-        functionsMap.put("square", Token.SQUARE);
         functionsMap.put("sin", Token.SIN);
         functionsMap.put("cos", Token.COS);
         functionsMap.put("tan", Token.TAN);
@@ -218,8 +216,6 @@ public class ExpressionParser implements Parser {
                 return new Factorial(unaryOperations(true));
             case ABS:
                 return new Abs(unaryOperations(true));
-            case SQUARE:
-                return new Square(unaryOperations(true));
             case SQRT:
                 return new Sqrt(unaryOperations(true));
             case SIN:

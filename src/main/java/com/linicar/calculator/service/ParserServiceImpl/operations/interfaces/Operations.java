@@ -19,8 +19,6 @@ public interface Operations {
 
     Double abs(Double x);
 
-    Double square(Double x);
-
     Double mod(Double left, Double right);
 
     Double sqrt(Double x) throws EvaluatingExceptions;

@@ -45,11 +45,6 @@ public class DoubleOperations implements Operations {
     }
 
     @Override
-    public Double square(Double x) {
-        return x * x;
-    }
-
-    @Override
     public Double mod(Double left, Double right) {
         return left % right;
     }

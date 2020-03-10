@@ -14,7 +14,6 @@
                     <tr>
                         <td colspan="4"><input autofocus type="text" id="expression" name="expression"
                                                value="${expression!}"/></td>
-                        <#--                        <td><input type="button" value="c" onclick="clear()"/> </td>-->
                     </tr>
                     <tr>
                         <td><input type="button" value="(" onclick="dis('(')"></td>
@@ -57,9 +56,6 @@
                         <td></td>
                     </tr>
                 </table>
-                <#--                <div class="button-field">-->
-                <#--                    <input type="submit" value="Enter">-->
-                <#--                </div>-->
                 <div class="message">
                     <#if message??>
                         ${message}
