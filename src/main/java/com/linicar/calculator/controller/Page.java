@@ -25,9 +25,9 @@ public class Page {
         try {
             Double ans = parserRepository.evaluate(expr);
             if (ans - ans.intValue() == 0) {
-                putMessage(httpSession, "Result: " + ans.intValue());
+                putMessage(httpSession,  expr + " = " + ans.intValue());
             } else {
-                putMessage(httpSession, "Result: " + ans);
+                putMessage(httpSession,  expr + " = " + ans);
             }
         } catch (ParserException | EvaluatingExceptions e) {
             putMessage(httpSession, "Error: " + e.getMessage());

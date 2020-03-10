@@ -27,6 +27,6 @@ public class EngineeringCalcPage extends Page {
     @PostMapping("engineer")
     public String calcEng(@Valid @ModelAttribute("expressionEng") String expressionEng, HttpSession httpSession) {
         calculation(expressionEng, httpSession, engineeringCalcService);
-        return "engineerCalc";
+        return "redirect:/engineer";
     }
 }
