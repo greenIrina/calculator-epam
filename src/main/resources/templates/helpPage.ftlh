@@ -62,7 +62,8 @@
                 </tbody>
             </table>
         </div>
-        <div class="textik"> <b>CAUTION:</b> power function is Left Distributive!!! 2<sup>2<sup>3</sup></sup> = 64 .</div>
+        <div class="textik"> <b>CAUTION:</b> power function is Left Distributive!!! 2<sup>2<sup>3</sup></sup> = 64 .
+            Use parentheses! 2^(2^3)</div>
 
     </div>
 
